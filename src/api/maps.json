@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Campina",
+    "level": 1,
+    "type": "grass",
+    "size": 45,
+    "poster": "maps/map1.png"
+  },
+  {
+    "id": 2,
+    "name": "Ilha",
+    "level": 2,
+    "type": "water",
+    "size": 105,
+    "poster": "maps/map2.png"
+  },
+  {
+    "id": 3,
+    "name": "Vulcano",
+    "level": 3,
+    "type": "fire",
+    "size": 175,
+    "poster": "maps/map3.png"
+  }
+]

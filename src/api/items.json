@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Potion HP(30)",
+    "description": "Cura 30 de vida",
+    "rarity": "normal",
+    "type": "health",
+    "price": 100,
+    "value": 30,
+    "poster": "items/potion1.png"
+  },
+  {
+    "id": 2,
+    "name": "Potion HP(60)",
+    "description": "Cura 60 de vida",
+    "rarity": "rare",
+    "type": "health",
+    "price": 180,
+    "value": 60,
+    "poster": "items/potion1.png"
+  },
+  {
+    "id": 3,
+    "name": "Mana MP(30)",
+    "description": "Cura 30 de mana",
+    "rarity": "normal",
+    "type": "mana",
+    "price": 90,
+    "value": 30,
+    "poster": "items/mana1.png"
+  },
+  {
+    "id": 4,
+    "name": "Mana MP(60)",
+    "description": "Cura 60 de mana",
+    "rarity": "rare",
+    "type": "mana",
+    "price": 160,
+    "value": 60,
+    "poster": "items/mana1.png"
+  },
+  {
+    "id": 9,
+    "name": "Poison (50)",
+    "description": "50 de dano no inimigo",
+    "rarity": "normal",
+    "type": "bomb",
+    "price": 90,
+    "value": 50,
+    "poster": "items/poison1.png"
+  }
+]

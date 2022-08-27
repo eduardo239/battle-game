@@ -1,0 +1,43 @@
+.card-container {
+  display: flex;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.card-grid {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.card {
+  display: block;
+  border: 2px solid var(--secondary);
+  padding: 0.5rem;
+  width: 100px;
+  height: 100px;
+}
+
+.card:hover {
+  cursor: pointer;
+  border: 2px solid var(--primary);
+}
+
+.hero {
+  border: 2px solid var(--dark);
+  padding: 1rem;
+}
+
+.price {
+  position: absolute;
+  top: -12px;
+  left: -6px;
+  background: var(--secondary);
+  color: var(--dark);
+  padding: 4px;
+  rotate: -28deg;
+  font-size: 0.75rem;
+  line-height: 1;
+  box-shadow: var(--shadow);
+}

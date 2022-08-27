@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Wilson Linson",
+    "type": "fire",
+    "gender": "m",
+    "exp": 0,
+    "poster": "heroes/avatar1.png",
+    "items": [],
+    "weapons": [],
+    "magic": []
+  },
+  {
+    "id": 2,
+    "name": "Brodi Brother",
+    "type": "water",
+    "gender": "f",
+    "exp": 0,
+    "poster": "heroes/avatar2.png",
+    "items": [],
+    "weapons": [],
+    "magic": []
+  },
+  {
+    "id": 3,
+    "name": "Joana Light",
+    "type": "wind",
+    "gender": "f",
+    "exp": 0,
+    "poster": "heroes/avatar3.png",
+    "items": [],
+    "weapons": [],
+    "magic": []
+  },
+  {
+    "id": 4,
+    "name": "Bill Money",
+    "type": "ground",
+    "gender": "m",
+    "exp": 0,
+    "poster": "heroes/avatar4.png",
+    "items": [],
+    "weapons": [],
+    "magic": []
+  }
+]

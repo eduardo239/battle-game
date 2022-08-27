@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Pikiri",
+    "type": "fire",
+    "gender": "m",
+    "hp": 100,
+    "attack": 3,
+    "poster": "enemy/boss1.png"
+  },
+  {
+    "id": 2,
+    "name": "Jen",
+    "type": "water",
+    "gender": "f",
+    "hp": 100,
+    "attack": 5,
+    "poster": "enemy/boss2.png"
+  },
+  {
+    "id": 3,
+    "name": "GAM",
+    "type": "wind",
+    "gender": "f",
+    "hp": 100,
+    "attack": 8,
+    "poster": "enemy/boss3.png"
+  },
+  {
+    "id": 4,
+    "name": "Mili",
+    "type": "fire",
+    "gender": "f",
+    "hp": 100,
+    "attack": 10,
+    "poster": "enemy/boss4.png"
+  }
+]
