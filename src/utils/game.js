@@ -1,6 +1,13 @@
 import { BOSS, ENEMY, ITEM, LEVEL_EASY, NULL, TRAP, INIT } from './constants';
 import { v4 as uuidv4 } from 'uuid';
 
+/**
+ *
+ * @param {Object} map necessário conter map.size
+ * @param {Array} enemies array de inimigos
+ * @param {Array} items array de itens
+ * @returns retonrno uma array com posicoes aleatorias
+ */
 export const generatePositions = (map, enemies, items) => {
   let positions = [];
 
@@ -33,4 +40,27 @@ export const generatePositions = (map, enemies, items) => {
   positions[positions.length - 1] = { boss: { name: BOSS }, id: uuidv4() };
 
   return positions;
+};
+
+/**
+ *
+ * @param {String} type tipo de mensagem, success, warning ou error
+ * @param {String} message mensagem que aparecera no Toast
+ * @param {function} setMessage funcao do useState, para resetar a mensagem
+ * @param {integer} timer tempo em milisegundos
+ */
+export const messageHandler = (type, message, setMessage, timer = 3000) => {
+  if (type && message && setMessage) {
+    setMessage({
+      type: type,
+      content: message,
+    });
+
+    setTimeout(() => {
+      setMessage({
+        type: '',
+        content: '',
+      });
+    }, timer);
+  }
 };

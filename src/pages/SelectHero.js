@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import Card from '../components/game/card/Hero';
+import CardHero from '../components/game/card/Hero';
 import { Link } from 'react-router-dom';
 import { GameContext } from '../context/Game';
 import { HeroContext } from '../context/Hero';
+import { URL_UNK } from '../utils/constants';
 
 const SelectHero = () => {
   const { heroes } = useContext(GameContext);
@@ -19,7 +20,7 @@ const SelectHero = () => {
       <div className="card-grid">
         {heroes.length > 0 ? (
           heroes.map(hero => (
-            <Card
+            <CardHero
               key={Math.random()}
               data={hero}
               handleClick={() => handleSelectThis(hero)}
@@ -44,9 +45,9 @@ const SelectHero = () => {
       {/* mostrar o heroi selecionado */}
       <div className="card-grid">
         {hero ? (
-          <Card key={Math.random()} data={hero}></Card>
+          <CardHero key={Math.random()} data={hero}></CardHero>
         ) : (
-          <Card data={{ name: 'Nada selecionado' }} />
+          <CardHero data={{ name: 'Nada selecionado', poster: URL_UNK }} />
         )}
       </div>
     </div>

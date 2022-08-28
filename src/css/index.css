@@ -4,11 +4,13 @@
   --primary: #f5414c;
   --secondary: #ffcb64;
   --tertiary: #c786bd;
-  --green: #c3e07a;
   --light: #bfc7d5;
   --dark: #292d3e;
   --darkest: #25293a;
 
+  --warning: #ffcb64;
+  --green: #c3e07a;
+  --error: #f84e6e;
   --opacity80: rgba(0, 0, 0, 0.8);
 
   --sans: 'Rubik', 'Franklin Gothic Medium', 'Arial Narrow', Arial;
@@ -71,7 +73,6 @@ body {
   line-height: 1.75;
   letter-spacing: 0.36px;
   margin: 0;
-  padding: 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -89,8 +90,12 @@ a {
   color: var(--primary);
 }
 
+b {
+  font-weight: 700;
+}
+
 img {
-  display: inline-block;
+  display: block;
   max-width: 100%;
 }
 
@@ -114,8 +119,8 @@ button:hover {
 }
 
 button:disabled {
-  background-color: #aaa;
-  color: #888;
+  background-color: #2e2e2e;
+  color: #6d6d6d;
   cursor: not-allowed;
 }
 
@@ -127,8 +132,8 @@ button:disabled:hover {
   width: 100%;
 }
 
-.relative {
-  position: relative;
+.flex-1 {
+  flex: 1;
 }
 
 .text-center {
@@ -139,4 +144,8 @@ button:disabled:hover {
   display: flex;
   gap: 0.25rem;
   flex-wrap: wrap;
+}
+
+.color-error {
+  color: var(--error);
 }

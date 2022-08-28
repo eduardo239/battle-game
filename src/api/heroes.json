@@ -7,11 +7,21 @@
     "type": "fire",
     "gender": "m",
     "exp": 0,
+    "level": 1,
+    "nextLevel": 100,
     "poster": "heroes/avatar1.png",
     "items": [],
     "weapons": [],
     "magic": [],
-    "gold": 0
+    "gold": 0,
+    "victories": 0,
+    "equipped": {
+      "weapon": null
+    },
+    "status": {
+      "poisoned": false,
+      "defense": false
+    }
   },
   {
     "id": 2,
@@ -21,11 +31,21 @@
     "type": "water",
     "gender": "f",
     "exp": 0,
+    "level": 1,
+    "nextLevel": 100,
     "poster": "heroes/avatar2.png",
     "items": [],
     "weapons": [],
     "magic": [],
-    "gold": 0
+    "gold": 0,
+    "victories": 0,
+    "equipped": {
+      "weapon": null
+    },
+    "status": {
+      "poisoned": false,
+      "defense": false
+    }
   },
   {
     "id": 3,
@@ -35,11 +55,21 @@
     "type": "wind",
     "gender": "f",
     "exp": 0,
+    "level": 1,
+    "nextLevel": 100,
     "poster": "heroes/avatar3.png",
     "items": [],
     "weapons": [],
     "magic": [],
-    "gold": 0
+    "gold": 0,
+    "victories": 0,
+    "equipped": {
+      "weapon": null
+    },
+    "status": {
+      "poisoned": false,
+      "defense": false
+    }
   },
   {
     "id": 4,
@@ -49,10 +79,19 @@
     "type": "ground",
     "gender": "m",
     "exp": 0,
+    "level": 1,
     "poster": "heroes/avatar4.png",
     "items": [],
     "weapons": [],
     "magic": [],
-    "gold": 0
+    "gold": 0,
+    "victories": 0,
+    "equipped": {
+      "weapon": null
+    },
+    "status": {
+      "poisoned": false,
+      "defense": false
+    }
   }
 ]

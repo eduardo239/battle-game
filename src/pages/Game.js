@@ -5,11 +5,11 @@ import { GameContext } from '../context/Game';
 import { HeroContext } from '../context/Hero';
 import Hero from '../components/game/card/HeroInline';
 import Position from '../components/game/position/Position';
-import ModalShop from '../components/modal/game/Shop';
-import ModalUserItems from '../components/modal/game/UserItems';
-import ModalFight from '../components/game/modal/ModalFight';
+import ModalShop from '../components/game/modal/Shop';
 import ModalItem from '../components/game/modal/ModalItem';
-import ModalTrap from '../components/game/modal/ModalTrap';
+import ModalTrap from '../components/game/modal/Trap';
+import ModalFight from '../components/game/modal/ModalFight';
+import ModalUserItems from '../components/game/modal/UserItems';
 import { BOSS, ENEMY, ITEM, NULL, TRAP } from '../utils/constants';
 
 const Game = () => {
@@ -20,6 +20,7 @@ const Game = () => {
 
   const [modalShop, setModalShop] = useState(false);
   const [modalItems, setModalItems] = useState(false);
+
   // abre o modal de acordo com a posicao
   const [modalFight, setModalFight] = useState(false);
   const [modalItem, setModalItem] = useState(false);
@@ -76,21 +77,9 @@ const Game = () => {
       alert('Boss');
     }
   };
-
   console.log(game);
-
   return (
-    <div>
-      <h1>game</h1>
-
-      <div className="game-menu">
-        <button onClick={() => play()}>jogar</button>
-        <button onClick={() => setModalShop(!modalShop)}>shop</button>
-        <button onClick={() => setModalItems(!modalItems)}>inventário</button>
-        <button onClick={() => reset()}>reiniciar</button>
-        <button>salvar</button>
-      </div>
-
+    <div className="game-container">
       {/* hero */}
       {hero && <Hero data={hero} />}
 
@@ -135,6 +124,15 @@ const Game = () => {
         data={data || {}}
       />
       {/* game modal boss */}
+
+      {/* game menu */}
+      <div className="game-menu">
+        <button onClick={() => play()}>jogar</button>
+        <button onClick={() => setModalShop(!modalShop)}>shop</button>
+        <button onClick={() => setModalItems(!modalItems)}>inventário</button>
+        <button onClick={() => reset()}>reiniciar</button>
+        <button>salvar</button>
+      </div>
     </div>
   );
 };

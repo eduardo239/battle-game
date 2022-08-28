@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { HeroContext } from '../../../context/Hero';
-import Card from '../../game/card/Item';
+import { MANA, HEALTH } from '../../../utils/constants';
+import Card from '../card/Item';
 
 const UserItems = ({ show, setModalItems }) => {
   const { hero, setHero } = useContext(HeroContext);
@@ -8,7 +9,19 @@ const UserItems = ({ show, setModalItems }) => {
   const handleUse = data => {
     // remove item da lista ao utilizar
     const newItems = hero.items.filter(i => i.id !== data.id);
-    setHero({ ...hero, items: newItems });
+
+    switch (data.type) {
+      case MANA:
+        // TODO: validar mana maxima
+        setHero({ ...hero, items: newItems, mana: hero.mana + data.value });
+        break;
+      case HEALTH:
+        // TODO: validar vida maxima
+        setHero({ ...hero, items: newItems, health: hero.health + data.value });
+        break;
+      default:
+        break;
+    }
   };
 
   return (

@@ -1,4 +1,12 @@
+.position {
+  margin: 0 10px;
+}
+
 .position.active {
   background-color: var(--dark);
   color: var(--green);
+}
+
+.position.pass {
+  opacity: 0.25;
 }

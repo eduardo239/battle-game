@@ -1,0 +1,31 @@
+.hero {
+  border: 2px solid var(--dark);
+  padding: 1rem;
+}
+
+.hero-inline-container {
+  display: flex;
+  background: var(--secondary);
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.hero-inline {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: var(--secondary);
+  color: var(--dark);
+  justify-content: space-between;
+  padding: 0 1rem;
+  align-items: center;
+  flex: 1;
+}
+
+.hero-inline span {
+  font-size: 0.85rem;
+}

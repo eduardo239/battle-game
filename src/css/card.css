@@ -8,12 +8,24 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem;
+  gap: 1px;
 }
 
 .card {
+  position: relative;
+
+  border: 1px solid var(--warning);
+  padding: 10px;
+}
+
+.card-image img {
+  width: 100px;
+  height: 100px;
+}
+
+.card-content {
   display: block;
-  border: 2px solid var(--secondary);
+
   padding: 0.5rem;
   width: 100px;
   height: 150px;
@@ -24,16 +36,11 @@
   text-align: left;
 }
 
-.card span {
+.card-content span {
+  /* FIXME: linha abaixo do texto */
   font-size: 0.65rem;
-  border-bottom: 1px solid var(--green);
   padding: 0.15rem 0;
   width: 100%;
-}
-
-.hero {
-  border: 2px solid var(--dark);
-  padding: 1rem;
 }
 
 .price {
@@ -46,5 +53,6 @@
   rotate: -28deg;
   font-size: 0.75rem;
   line-height: 1;
+  font-weight: 700;
   box-shadow: var(--shadow);
 }

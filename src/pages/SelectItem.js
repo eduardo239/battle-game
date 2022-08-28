@@ -3,15 +3,26 @@ import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import { GameContext } from '../context/Game';
 import { HeroContext } from '../context/Hero';
-import Card from '../components/game/card/Item';
+import CardItem from '../components/game/card/Item';
+import { URL_UNK } from '../utils/constants';
 
 const SelectItem = () => {
-  const { items } = useContext(GameContext);
+  const { items, magic, weapons } = useContext(GameContext);
   const { hero, setHero } = useContext(HeroContext);
 
   const handleSelectThis = data => {
     // adicionar o item aos items do heroi
-    setHero({ ...hero, items: [data] });
+    setHero({
+      ...hero,
+      items: [data],
+      magic: [magic[0]],
+      weapons: [weapons[0]],
+      equipped: {
+        weapon: weapons[0],
+      },
+    });
+
+    // TODO: adicionar a magica e a arma ao heroi
   };
 
   const handleSelect = data => {
@@ -25,7 +36,7 @@ const SelectItem = () => {
       <div className="card-grid">
         {items.length > 0 ? (
           items.map(item => (
-            <Card
+            <CardItem
               key={Math.random()}
               data={item}
               handleClick={() => handleSelect(item)}
@@ -50,9 +61,11 @@ const SelectItem = () => {
       {/* mostrar o heroi selecionado */}
       <div className="card-grid">
         {hero && hero.items && hero.items.length > 0 ? (
-          hero.items.map(item => <Card key={Math.random()} data={item}></Card>)
+          hero.items.map(item => (
+            <CardItem key={Math.random()} data={item}></CardItem>
+          ))
         ) : (
-          <Card data={{ name: 'Nada selecionado' }} />
+          <CardItem data={{ name: 'Nada selecionado', poster: URL_UNK }} />
         )}
       </div>
     </div>

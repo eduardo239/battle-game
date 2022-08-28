@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ModalTrap = ({ show, setModalTrap }) => {
+const Trap = ({ show, setModalTrap }) => {
   return (
     <div className={`modal-container ${show ? 'active' : ''}`}>
       <div className={`modal ${show ? 'active' : ''}`}>
@@ -11,4 +11,4 @@ const ModalTrap = ({ show, setModalTrap }) => {
   );
 };
 
-export default ModalTrap;
+export default Trap;

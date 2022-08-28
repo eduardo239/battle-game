@@ -4,6 +4,8 @@ import heroes_api from '../api/heroes.json';
 import items_api from '../api/items.json';
 import maps_api from '../api/maps.json';
 import enemies_api from '../api/enemies.json';
+import magic_api from '../api/magic.json';
+import weapons_api from '../api/weapons.json';
 
 const GameContext = React.createContext();
 const GameProvider = GameContext.Provider;
@@ -13,6 +15,8 @@ const ContextGame = ({ children }) => {
   const [items, setItems] = useState([]);
   const [maps, setMaps] = useState([]);
   const [enemies, setEnemies] = useState([]);
+  const [weapons, setWeapos] = useState([]);
+  const [magic, setMagic] = useState([]);
 
   // dados das posicoes
   const [enemy, setEnemy] = useState(null);
@@ -74,11 +78,15 @@ const ContextGame = ({ children }) => {
       if (maps.length === 0) setMaps(maps_api);
       // carregar os inimigos da api
       if (enemies.length === 0) setEnemies(enemies_api);
+      // carregar as armas da api
+      if (weapons.length === 0) setWeapos(weapons_api);
+      // carregar as magicas da api
+      if (magic.length === 0) setMagic(magic_api);
     }
     return () => {
       mounted = false;
     };
-  }, [heroes]);
+  }, [heroes, items, maps, enemies, weapons, magic]);
 
   return (
     <GameProvider
@@ -88,6 +96,8 @@ const ContextGame = ({ children }) => {
         maps,
         enemies,
         map,
+        weapons,
+        magic,
         game,
         enemy,
         item,

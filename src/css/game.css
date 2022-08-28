@@ -1,8 +1,15 @@
+.game-container {
+  margin-bottom: 2rem;
+}
+
 .game-menu {
   position: sticky;
-  top: 0;
+  display: flex;
+  bottom: 0;
   left: 0;
   z-index: 1;
+  flex-wrap: wrap;
+  gap: 1px;
 }
 
 .game-fight,
@@ -17,12 +24,69 @@
 }
 
 .game-fight-menu {
-  /* FIXME: */
-  gap: 0.34rem;
+  margin-top: 1rem;
+  gap: 1px;
+}
+
+.game-fight-log {
+  overflow-x: auto;
+  background: var(--darkest);
+  font-family: monospace;
+  margin-top: 1rem;
+  height: 100px;
+  display: block;
+  border: 2px solid var(--secondary);
+}
+
+.game-fight-log p {
+  border-bottom: 2px solid var(--dark);
+  margin-left: 10px;
+  font-size: 0.75rem;
+  margin-bottom: 0;
 }
 
 .menu-select {
-  margin: 0.25rem 0;
+  margin: 1px 0 0 0;
   display: flex;
-  gap: 0.25rem;
+  gap: 1px;
+}
+
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  width: 100%;
+  background: var(--dark);
+  padding: 1rem;
+  display: none;
+  transform: translateY(-60px);
+  opacity: 0;
+}
+
+.message.success {
+  color: var(--green);
+}
+
+.message.warning {
+  color: var(--warning);
+}
+
+.message.error {
+  color: var(--error);
+}
+
+.message.success,
+.message.warning,
+.message.error {
+  animation: showUp 0.2s forwards;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: block;
+}
+
+@keyframes showUp {
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }

@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "Bola de fogo (SM)",
+    "description": "Dano pequeno de fogo",
+    "rarity": "normal",
+    "type": "fire",
+    "mana": 40,
+    "min": 45,
+    "max": 80,
+    "poster": "items/potion1.png"
+  },
+  {
+    "id": 2,
+    "name": "Bola de fogo (MD)",
+    "description": "Dano médio de fogo",
+    "rarity": "rare",
+    "type": "fire",
+    "mana": 80,
+    "min": 90,
+    "max": 125,
+    "poster": "items/potion1.png"
+  },
+  {
+    "id": 3,
+    "name": "Bola de fogo (BG)",
+    "description": "Dano grande de fogo",
+    "rarity": "super rare",
+    "type": "fire",
+    "mana": 120,
+    "min": 180,
+    "max": 399,
+    "poster": "items/mana1.png"
+  }
+]

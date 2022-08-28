@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { GameContext } from '../context/Game';
 import { generatePositions } from '../utils/game';
 import { Link, useNavigate } from 'react-router-dom';
-import Card from '../components/game/card/Map';
+import CardMap from '../components/game/card/Map';
+import { URL_UNK } from '../utils/constants';
 
 const SelectMap = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const SelectMap = () => {
   const initGame = () => {
     // configurar o jogo
     setGame({ ...game, map: map });
+
     // gerar as posicoes
     try {
       let positions = generatePositions(map, enemies, items);
@@ -27,6 +29,7 @@ const SelectMap = () => {
         mapLength: positions.length,
         heroPosition: 0,
       });
+
       // redirecionar e iniciar o jogo
       setTimeout(() => navigate('/start-game'), 100);
     } catch (error) {
@@ -40,7 +43,7 @@ const SelectMap = () => {
       <div className="card-grid">
         {maps.length > 0 ? (
           maps.map(data => (
-            <Card
+            <CardMap
               key={Math.random()}
               data={data}
               handleClick={() => handleSelectThis(data)}
@@ -65,9 +68,9 @@ const SelectMap = () => {
       {/* mostrar o heroi selecionado */}
       <div className="card-grid">
         {map != null ? (
-          <Card key={Math.random()} data={map}></Card>
+          <CardMap key={Math.random()} data={map}></CardMap>
         ) : (
-          <Card data={{ name: 'Nada selecionado' }} />
+          <CardMap data={{ name: 'Nada selecionado', poster: URL_UNK }} />
         )}
       </div>
     </div>
