@@ -1,7 +1,5 @@
-# Game Battle :pig:
+# CARD GAME :pig:
 
-Jogo de cartas para um jogador
-
-- Testando ... git push -u origin master
+Jogo de batalha, baseado em experiência, gold, itens, armas e magias.
 
 ![Game Battle](https://raw.githubusercontent.com/eduardo239/battle-game/main/src/print.PNG)
