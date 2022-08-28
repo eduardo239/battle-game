@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Card from '../components/game/hero/Card';
+import Card from '../components/game/card/Hero';
 import { Link } from 'react-router-dom';
 import { GameContext } from '../context/Game';
 import { HeroContext } from '../context/Hero';
@@ -31,22 +31,24 @@ const SelectHero = () => {
         )}
       </div>
 
+      {/* menu */}
+      <div className="menu-select">
+        <Link to="/">
+          <button>página inicial</button>
+        </Link>
+        <Link to="/select-item">
+          <button disabled={!hero}>próximo</button>
+        </Link>
+      </div>
+
       {/* mostrar o heroi selecionado */}
       <div className="card-grid">
         {hero ? (
           <Card key={Math.random()} data={hero}></Card>
         ) : (
-          <span>Nada encontrado aqui</span>
+          <Card data={{ name: 'Nada selecionado' }} />
         )}
       </div>
-
-      {/* menu */}
-      <Link to="/">
-        <button>página inicial</button>
-      </Link>
-      <Link to="/select-item">
-        <button disabled={!hero}>selecionar item</button>
-      </Link>
     </div>
   );
 };

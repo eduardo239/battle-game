@@ -16,12 +16,19 @@
   border: 2px solid var(--secondary);
   padding: 0.5rem;
   width: 100px;
-  height: 100px;
+  height: 150px;
+  text-transform: uppercase;
+  /* FIXME: */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
-.card:hover {
-  cursor: pointer;
-  border: 2px solid var(--primary);
+.card span {
+  font-size: 0.65rem;
+  border-bottom: 1px solid var(--green);
+  padding: 0.15rem 0;
+  width: 100%;
 }
 
 .hero {

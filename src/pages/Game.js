@@ -3,65 +3,74 @@ import { random } from '../utils';
 import { useNavigate } from 'react-router-dom';
 import { GameContext } from '../context/Game';
 import { HeroContext } from '../context/Hero';
-import Hero from '../components/game/hero/Hero';
+import Hero from '../components/game/card/HeroInline';
 import Position from '../components/game/position/Position';
 import ModalShop from '../components/modal/game/Shop';
 import ModalUserItems from '../components/modal/game/UserItems';
-import {
-  BOSS,
-  ENEMY,
-  ITEM,
-  LEVEL_EASY,
-  NULL,
-  TRAP,
-  INIT,
-} from '../utils/constants';
+import ModalFight from '../components/game/modal/ModalFight';
+import ModalItem from '../components/game/modal/ModalItem';
+import ModalTrap from '../components/game/modal/ModalTrap';
+import { BOSS, ENEMY, ITEM, NULL, TRAP } from '../utils/constants';
 
 const Game = () => {
   const navigate = useNavigate();
-  const { game, setGame, resetGame } = useContext(GameContext);
+  const { game, setGame, setEnemy, setFightLog, resetGame } =
+    useContext(GameContext);
   const { hero } = useContext(HeroContext);
 
   const [modalShop, setModalShop] = useState(false);
   const [modalItems, setModalItems] = useState(false);
+  // abre o modal de acordo com a posicao
+  const [modalFight, setModalFight] = useState(false);
+  const [modalItem, setModalItem] = useState(false);
+  const [modalTrap, setModalTrap] = useState(false);
+
+  // insere o objeto da posicao atual no estado
+  const [data, setData] = useState(null);
 
   const reset = () => {
     resetGame();
-    setTimeout(() => navigate('/'), 400);
+    setTimeout(() => navigate('/'), 100);
   };
 
   const play = () => {
-    if (game.heroPosition < game.mapLength) {
+    if (game.mapLength === 0) {
+      console.log('select map hero item');
+    } else if (game.heroPosition < game.mapLength) {
       let randomInt = random(1, 6);
       setGame({ ...game, heroPosition: game.heroPosition + randomInt });
 
       // verifica o tipo de posicao atual
       let actualPosition = game.mapPositions[game.heroPosition + randomInt];
-      console.log(actualPosition);
 
       // verifica o tipo da posicao do mapa
-      let actualMapPosition = Object.keys(actualPosition)[0];
-      console.log(actualMapPosition);
+      if (!actualPosition) {
+        console.log('fim do mapa Boss');
+      } else {
+        let actualMapPosition = Object.keys(actualPosition)[0];
 
-      // abre o modal de acordo com o tipo de posicao
-      switch (actualMapPosition) {
-        case ENEMY:
-          console.log('modal enemy');
-          break;
-        case ITEM:
-          console.log('modal item');
-          break;
-        case TRAP:
-          console.log('modal trap');
-          break;
-        case BOSS:
-          console.log('modal boss');
-          break;
-        case NULL:
-          console.log('modal null');
-          break;
-        default:
-          break;
+        // abre o modal de acordo com o tipo de posicao
+        switch (actualMapPosition) {
+          case ENEMY:
+            setEnemy({ ...actualPosition.enemy });
+            setModalFight(true);
+            setFightLog([]);
+            break;
+          case ITEM:
+            setModalItem(true);
+            setData(actualPosition);
+            break;
+          case TRAP:
+            setModalTrap(true);
+            setData(actualPosition);
+            break;
+          case BOSS:
+            break;
+          case NULL:
+            break;
+          default:
+            break;
+        }
       }
     } else {
       alert('Boss');
@@ -103,9 +112,29 @@ const Game = () => {
       <ModalShop show={modalShop} setModalShop={setModalShop} />
 
       {/* modal itens do ususario */}
-      <ModalUserItems show={modalItems} setModalUserItems={setModalItems} />
+      <ModalUserItems show={modalItems} setModalItems={setModalItems} />
 
-      {/* save game */}
+      {/* game modal luta */}
+      <ModalFight
+        show={modalFight}
+        setModalFight={setModalFight}
+        setData={setData}
+      />
+      {/* game modal item */}
+      <ModalItem
+        show={modalItem}
+        setModalItem={setModalItem}
+        setData={setData}
+        data={data || {}}
+      />
+      {/* game modal trap */}
+      <ModalTrap
+        show={modalTrap}
+        setModalTrap={setModalTrap}
+        setData={setData}
+        data={data || {}}
+      />
+      {/* game modal boss */}
     </div>
   );
 };

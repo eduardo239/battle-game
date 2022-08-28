@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import Card from '../components/game/item/Card';
-import { Link, useNavigate } from 'react-router-dom';
 import { GameContext } from '../context/Game';
 import { generatePositions } from '../utils/game';
+import { Link, useNavigate } from 'react-router-dom';
+import Card from '../components/game/card/Map';
 
 const SelectMap = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const SelectMap = () => {
         heroPosition: 0,
       });
       // redirecionar e iniciar o jogo
-      setTimeout(() => navigate('/start-game'), 1000);
+      setTimeout(() => navigate('/start-game'), 100);
     } catch (error) {
       console.warn(error);
     }
@@ -51,22 +51,25 @@ const SelectMap = () => {
           <span>Nada encontrado aqui</span>
         )}
       </div>
+
+      {/* menu */}
+      <div className="menu-select">
+        <Link to="/select-item">
+          <button>voltar</button>
+        </Link>
+        <button onClick={initGame} disabled={!map}>
+          começar
+        </button>
+      </div>
+
       {/* mostrar o heroi selecionado */}
       <div className="card-grid">
         {map != null ? (
           <Card key={Math.random()} data={map}></Card>
         ) : (
-          <span>Nada encontrado aqui</span>
+          <Card data={{ name: 'Nada selecionado' }} />
         )}
       </div>
-      {/* menu */}
-      <Link to="/select-item">
-        <button>selecionoar item</button>
-      </Link>
-
-      <button onClick={initGame} disabled={!map}>
-        iniciar
-      </button>
     </div>
   );
 };

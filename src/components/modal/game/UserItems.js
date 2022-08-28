@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { HeroContext } from '../../../context/Hero';
-import Card from '../../game/item/Card';
+import Card from '../../game/card/Item';
 
-const UserItems = ({ show, setModalUserItems }) => {
+const UserItems = ({ show, setModalItems }) => {
   const { hero, setHero } = useContext(HeroContext);
 
   const handleUse = data => {
@@ -14,9 +14,9 @@ const UserItems = ({ show, setModalUserItems }) => {
   return (
     <div className={`modal-container ${show ? 'active' : ''}`}>
       <div className={`modal ${show ? 'active' : ''}`}>
-        <button onClick={() => setModalUserItems(false)}>fechar a loja</button>
+        <button onClick={() => setModalItems(false)}>fechar</button>
 
-        <h1>Loja</h1>
+        <h1>Inventário</h1>
 
         <div className="grid-container">
           {hero && hero.items.length > 0 ? (

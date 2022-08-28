@@ -4,3 +4,25 @@
   left: 0;
   z-index: 1;
 }
+
+.game-fight,
+.game-fight-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-fight {
+  gap: 1.8rem;
+}
+
+.game-fight-menu {
+  /* FIXME: */
+  gap: 0.34rem;
+}
+
+.menu-select {
+  margin: 0.25rem 0;
+  display: flex;
+  gap: 0.25rem;
+}

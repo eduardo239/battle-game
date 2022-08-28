@@ -14,16 +14,32 @@ const ContextGame = ({ children }) => {
   const [maps, setMaps] = useState([]);
   const [enemies, setEnemies] = useState([]);
 
+  // dados das posicoes
+  const [enemy, setEnemy] = useState(null);
+  const [item, setItem] = useState(null);
+
+  // log da luta
+  const [fightLog, setFightLog] = useState([]);
+
   // mapa selecionado
   const [map, setMap] = useState(null);
 
-  // jogo
+  // estado do jogo
   const [game, setGame] = useState({
     map: null,
     mapPositions: 0,
     mapLength: 0,
     heroPosition: 0,
     end: false,
+  });
+
+  // estado da luta
+  const [fight, setFight] = useState({
+    round: 0,
+    modalInventory: false,
+    end: false,
+    turn: 0,
+    winner: null,
   });
 
   const resetGame = () => {
@@ -33,6 +49,16 @@ const ContextGame = ({ children }) => {
       mapLength: 0,
       heroPosition: 0,
       end: false,
+    });
+  };
+
+  const resetFight = () => {
+    setFight({
+      round: 0,
+      modalInventory: false,
+      end: false,
+      turn: 0,
+      winner: null,
     });
   };
 
@@ -63,9 +89,18 @@ const ContextGame = ({ children }) => {
         enemies,
         map,
         game,
+        enemy,
+        item,
+        fight,
+        fightLog,
         setMap,
         setGame,
+        setFight,
+        setEnemy,
+        setItem,
+        setFightLog,
         resetGame,
+        resetFight,
       }}
     >
       {children}

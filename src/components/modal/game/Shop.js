@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { GameContext } from '../../../context/Game';
 import { HeroContext } from '../../../context/Hero';
 import { v4 as uuidv4 } from 'uuid';
-import Card from '../../game/item/Card';
+import Card from '../../game/card/Item';
 
 const Shop = ({ show, setModalShop }) => {
   const { items } = useContext(GameContext);
@@ -20,7 +20,7 @@ const Shop = ({ show, setModalShop }) => {
   return (
     <div className={`modal-container ${show ? 'active' : ''}`}>
       <div className={`modal ${show ? 'active' : ''}`}>
-        <button onClick={() => setModalShop(false)}>fechar a loja</button>
+        <button onClick={() => setModalShop(false)}>fechar</button>
 
         <h1>Loja</h1>
 
