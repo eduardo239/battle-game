@@ -15,40 +15,42 @@ const SelectHero = () => {
   };
 
   return (
-    <div>
-      {/* loop pelos herois da api */}
-      <div className="card-grid">
-        {heroes.length > 0 ? (
-          heroes.map(hero => (
-            <CardHero
-              key={Math.random()}
-              data={hero}
-              handleClick={() => handleSelectThis(hero)}
-              type="select"
-            />
-          ))
-        ) : (
-          <span>Nada encontrado aqui</span>
-        )}
-      </div>
+    <div className="center-center">
+      <div>
+        {/* loop pelos herois da api */}
+        <div className="card-grid">
+          {heroes.length > 0 ? (
+            heroes.map(hero => (
+              <CardHero
+                key={Math.random()}
+                data={hero}
+                handleClick={() => handleSelectThis(hero)}
+                type="select"
+              />
+            ))
+          ) : (
+            <span>Nada encontrado aqui</span>
+          )}
+        </div>
 
-      {/* menu */}
-      <div className="menu-select">
-        <Link to="/">
-          <button>página inicial</button>
-        </Link>
-        <Link to="/select-item">
-          <button disabled={!hero}>próximo</button>
-        </Link>
-      </div>
+        {/* menu */}
+        <div className="menu-select">
+          <Link to="/">
+            <button>início</button>
+          </Link>
+          <Link to="/select-item">
+            <button disabled={!hero}>próximo</button>
+          </Link>
+        </div>
 
-      {/* mostrar o heroi selecionado */}
-      <div className="card-grid">
-        {hero ? (
-          <CardHero key={Math.random()} data={hero}></CardHero>
-        ) : (
-          <CardHero data={{ name: 'Nada selecionado', poster: URL_UNK }} />
-        )}
+        {/* mostrar o heroi selecionado */}
+        <div className="card-grid">
+          {hero ? (
+            <CardHero key={Math.random()} data={hero}></CardHero>
+          ) : (
+            <CardHero data={{ name: 'Nada selecionado', poster: URL_UNK }} />
+          )}
+        </div>
       </div>
     </div>
   );

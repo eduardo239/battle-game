@@ -31,42 +31,44 @@ const SelectItem = () => {
   };
 
   return (
-    <div>
-      {/* loop pelos herois da api */}
-      <div className="card-grid">
-        {items.length > 0 ? (
-          items.map(item => (
-            <CardItem
-              key={Math.random()}
-              data={item}
-              handleClick={() => handleSelect(item)}
-              type="select"
-            />
-          ))
-        ) : (
-          <span>Nada encontrado aqui</span>
-        )}
-      </div>
+    <div className="center-center">
+      <div>
+        {/* loop pelos herois da api */}
+        <div className="card-grid">
+          {items.length > 0 ? (
+            items.map(item => (
+              <CardItem
+                key={Math.random()}
+                data={item}
+                handleClick={() => handleSelect(item)}
+                type="select"
+              />
+            ))
+          ) : (
+            <span>Nada encontrado aqui</span>
+          )}
+        </div>
 
-      {/* menu */}
-      <div className="menu-select">
-        <Link to="/select-hero">
-          <button>voltar</button>
-        </Link>
-        <Link to="/select-map">
-          <button disabled={!hero || hero.items.length === 0}>próximo</button>
-        </Link>
-      </div>
+        {/* menu */}
+        <div className="menu-select">
+          <Link to="/select-hero">
+            <button>voltar</button>
+          </Link>
+          <Link to="/select-map">
+            <button disabled={!hero || hero.items.length === 0}>próximo</button>
+          </Link>
+        </div>
 
-      {/* mostrar o heroi selecionado */}
-      <div className="card-grid">
-        {hero && hero.items && hero.items.length > 0 ? (
-          hero.items.map(item => (
-            <CardItem key={Math.random()} data={item}></CardItem>
-          ))
-        ) : (
-          <CardItem data={{ name: 'Nada selecionado', poster: URL_UNK }} />
-        )}
+        {/* mostrar o heroi selecionado */}
+        <div className="card-grid">
+          {hero && hero.items && hero.items.length > 0 ? (
+            hero.items.map(item => (
+              <CardItem key={Math.random()} data={item}></CardItem>
+            ))
+          ) : (
+            <CardItem data={{ name: 'Nada selecionado', poster: URL_UNK }} />
+          )}
+        </div>
       </div>
     </div>
   );

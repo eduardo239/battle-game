@@ -3,9 +3,12 @@ import { HEALTH, MANA } from '../../../utils/constants';
 import { random } from '../../../utils';
 import { GameContext } from '../../../context/Game';
 import { HeroContext } from '../../../context/Hero';
-import CardHero from '../card/Hero';
 import ModalItems from './fight/ModalItems';
 import ModalMagic from './fight/ModalMagic';
+import Log from './fight/Log';
+import Play from './fight/Play';
+import Fight from './fight/Fight';
+import Turn from './fight/Turn';
 
 const ModalFight = ({ show, setModalFight }) => {
   const { hero, setHero } = useContext(HeroContext);
@@ -121,7 +124,13 @@ const ModalFight = ({ show, setModalFight }) => {
       setModalFight(false);
     } else {
       // sair com prejuizo
-      setHero({ ...hero, gold: hero.gold - 15, exp: hero.exp - 15 });
+      let expHero = hero.exp;
+      let expBase = 15;
+      if (expHero < expBase) {
+        setHero({ ...hero, gold: hero.gold - 15, exp: 0 });
+      } else {
+        setHero({ ...hero, gold: hero.gold - 15, exp: hero.exp - 15 });
+      }
       setModalFight(false);
     }
     resetFight();
@@ -196,66 +205,26 @@ const ModalFight = ({ show, setModalFight }) => {
           <div className={`modal ${show ? 'active' : ''}`}>
             <h3>Luta</h3>
 
-            <div>
-              <small>Rodada: {fight.round || 0}</small>
-            </div>
-
-            <div>
-              <small>
-                Vez de jogar:{' '}
-                {fight.turn === 0 ? 'Herói' : 'Inimigo atacando ... 1500ms'}
-              </small>
-            </div>
-
-            <div className="game-fight">
-              <div className="text-center">
-                <h4>Herói</h4>
-                <CardHero data={hero}></CardHero>
-              </div>
-
-              <h1>vs</h1>
-
-              <div className="text-center">
-                <h4>Inimigo</h4>
-                {enemy && <CardHero data={enemy}></CardHero>}
-              </div>
-            </div>
-            <div className="game-fight-menu">
-              <button disabled={fight.end || fight.turn === 1} onClick={hit}>
-                lutar
-              </button>
-              <button
-                disabled={fight.end || fight.turn === 1 || hero.mana <= 0}
-                onClick={() => setModalUserMagic(true)}
-              >
-                mágica
-              </button>
-              <button
-                disabled={fight.end || fight.turn === 1}
-                onClick={() => setModalInventory(true)}
-              >
-                inventário
-              </button>
-              <button disabled={fight.turn === 1 && !fight.end} onClick={flee}>
-                {fight.end && fight.winner === 0
-                  ? 'sair'
-                  : fight.end && fight.winner === 1
-                  ? 'fim'
-                  : 'fugir'}
-              </button>
-            </div>
+            {/*  */}
+            <Turn fight={fight} />
 
             {/*  */}
+            <Fight hero={hero} enemy={enemy} />
 
-            <div className="game-fight-log ">
-              {fightLog.length > 0 ? (
-                fightLog.map((log, index) => (
-                  <p key={index}>{JSON.stringify(log)}</p>
-                ))
-              ) : (
-                <p></p>
-              )}
-            </div>
+            {/*  */}
+            <Play
+              fight={fight}
+              flee={flee}
+              hero={hero}
+              hit={hit}
+              setModalUserMagic={setModalUserMagic}
+              setModalInventory={setModalInventory}
+            />
+
+            {/*  */}
+            <Log fightLog={fightLog} />
+
+            {/*  */}
           </div>
         </div>
 

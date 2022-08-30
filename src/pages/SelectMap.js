@@ -38,40 +38,42 @@ const SelectMap = () => {
   };
 
   return (
-    <div>
-      {/* loop pelos herois da api */}
-      <div className="card-grid">
-        {maps.length > 0 ? (
-          maps.map(data => (
-            <CardMap
-              key={Math.random()}
-              data={data}
-              handleClick={() => handleSelectThis(data)}
-              type="select"
-            />
-          ))
-        ) : (
-          <span>Nada encontrado aqui</span>
-        )}
-      </div>
+    <div className="center-center">
+      <div>
+        {/* loop pelos herois da api */}
+        <div className="card-grid">
+          {maps.length > 0 ? (
+            maps.map(data => (
+              <CardMap
+                key={Math.random()}
+                data={data}
+                handleClick={() => handleSelectThis(data)}
+                type="select"
+              />
+            ))
+          ) : (
+            <span>Nada encontrado aqui</span>
+          )}
+        </div>
 
-      {/* menu */}
-      <div className="menu-select">
-        <Link to="/select-item">
-          <button>voltar</button>
-        </Link>
-        <button onClick={initGame} disabled={!map}>
-          começar
-        </button>
-      </div>
+        {/* menu */}
+        <div className="menu-select">
+          <Link to="/select-item">
+            <button>voltar</button>
+          </Link>
+          <button onClick={initGame} disabled={!map}>
+            começar
+          </button>
+        </div>
 
-      {/* mostrar o heroi selecionado */}
-      <div className="card-grid">
-        {map != null ? (
-          <CardMap key={Math.random()} data={map}></CardMap>
-        ) : (
-          <CardMap data={{ name: 'Nada selecionado', poster: URL_UNK }} />
-        )}
+        {/* mostrar o heroi selecionado */}
+        <div className="card-grid">
+          {map != null ? (
+            <CardMap key={Math.random()} data={map}></CardMap>
+          ) : (
+            <CardMap data={{ name: 'Nada selecionado', poster: URL_UNK }} />
+          )}
+        </div>
       </div>
     </div>
   );

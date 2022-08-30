@@ -39,6 +39,7 @@ const Shop = ({ show, setModalShop }) => {
           <button onClick={() => setModalShop(false)}>fechar</button>
 
           <h1>Loja</h1>
+          <h4>Saldo do herói: ${(hero && hero.gold) || 0}</h4>
 
           <div className="card-container">
             {items.length > 0 ? (

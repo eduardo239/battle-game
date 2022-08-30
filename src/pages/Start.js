@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Start = () => {
   return (
-    <div>
+    <div className="center-center">
       <Link to="/select-hero">
         <button>iniciar</button>
       </Link>
