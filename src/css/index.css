@@ -79,7 +79,6 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   background-color: var(--darkest);
   color: var(--light);
 }
@@ -109,17 +108,19 @@ button {
   border: 2px solid transparent;
   background-color: var(--primary);
   color: var(--light);
-  padding: 0.5rem 0.1rem;
+  padding: 0 0.4rem;
   text-transform: uppercase;
   font-size: 0.7rem;
-  width: 100px;
+  width: 120px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 button:hover {
   cursor: pointer;
-  background-color: var(--darkest);
-  color: var(--secondary);
-  border: 2px solid var(--dark);
+  border: 2px solid var(--light);
 }
 
 button:disabled {
@@ -148,6 +149,12 @@ button:disabled:hover {
   flex: 1;
 }
 
+.flex-justify-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .text-center {
   text-align: center;
 }
@@ -160,4 +167,12 @@ button:disabled:hover {
 
 .color-error {
   color: var(--error);
+}
+
+.color-warning {
+  color: var(--warning);
+}
+
+.filter-grayscale {
+  filter: grayscale(1);
 }

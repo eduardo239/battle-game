@@ -5,7 +5,10 @@ const Start = () => {
   return (
     <div className="center-center">
       <Link to="/select-hero">
-        <button>iniciar</button>
+        <button>
+          iniciar{' '}
+          <span className="material-symbols-outlined">chevron_right</span>
+        </button>
       </Link>
     </div>
   );

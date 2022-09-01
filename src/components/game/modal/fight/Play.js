@@ -1,13 +1,6 @@
 import React from 'react';
 
-const Play = ({
-  fight,
-  flee,
-  hero,
-  hit,
-  setModalUserMagic,
-  setModalInventory,
-}) => {
+const Play = ({ fight, flee, hero, hit, setModalUserMagic, setModalItem }) => {
   return (
     <div className="game-fight-menu">
       <button disabled={fight.end || fight.turn === 1} onClick={hit}>
@@ -21,10 +14,11 @@ const Play = ({
       </button>
       <button
         disabled={fight.end || fight.turn === 1}
-        onClick={() => setModalInventory(true)}
+        onClick={() => setModalItem(true)}
       >
         inventário
       </button>
+
       <button disabled={fight.turn === 1 && !fight.end} onClick={flee}>
         {fight.end && fight.winner === 0
           ? 'sair'

@@ -15,9 +15,21 @@ const Card = ({ data, handleClick, type = 'none' }) => {
         <span>VL: {data.value}</span>
       </div>
 
-      {type === 'shop' && <button onClick={handleClick}>buy</button>}
-      {type === 'use' && <button onClick={handleClick}>use</button>}
-      {type === 'select' && <button onClick={handleClick}>selecionar</button>}
+      {type === 'shop' && (
+        <button className="width100" onClick={handleClick}>
+          comprar
+        </button>
+      )}
+      {type === 'use' && (
+        <button className="width100" onClick={handleClick}>
+          use
+        </button>
+      )}
+      {type === 'select' && (
+        <button className="width100" onClick={handleClick}>
+          selecionar
+        </button>
+      )}
     </div>
   );
 };

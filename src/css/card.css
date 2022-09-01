@@ -3,6 +3,8 @@
   flex-wrap: wrap;
   position: relative;
   gap: 0.25rem;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .card-grid {

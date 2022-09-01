@@ -17,7 +17,7 @@ const Shop = ({ show, setModalShop }) => {
   });
 
   const handleBuy = data => {
-    if (hero.gold > data.price) {
+    if (hero.gold >= data.price) {
       if (hero) {
         // compra de item e adiciona a lista do heroi
         let newGold = hero.gold - data.price;
@@ -36,10 +36,13 @@ const Shop = ({ show, setModalShop }) => {
     <>
       <div className={`modal-container ${show ? 'active' : ''}`}>
         <div className={`modal ${show ? 'active' : ''}`}>
-          <button onClick={() => setModalShop(false)}>fechar</button>
-
-          <h1>Loja</h1>
-          <h4>Saldo do herói: ${(hero && hero.gold) || 0}</h4>
+          <div className="flex-justify-between">
+            <h1>Loja</h1>
+            <h3 className="color-warning ">
+              Saldo do herói: ${(hero && hero.gold) || 0}
+            </h3>
+            <button onClick={() => setModalShop(false)}>fechar</button>
+          </div>
 
           <div className="card-container">
             {items.length > 0 ? (

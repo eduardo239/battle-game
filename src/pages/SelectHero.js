@@ -20,14 +20,16 @@ const SelectHero = () => {
         {/* loop pelos herois da api */}
         <div className="card-grid">
           {heroes.length > 0 ? (
-            heroes.map(hero => (
-              <CardHero
-                key={Math.random()}
-                data={hero}
-                handleClick={() => handleSelectThis(hero)}
-                type="select"
-              />
-            ))
+            heroes
+              .map(hero => (
+                <CardHero
+                  key={Math.random()}
+                  data={hero}
+                  handleClick={() => handleSelectThis(hero)}
+                  type="select"
+                />
+              ))
+              .splice(0, 3)
           ) : (
             <span>Nada encontrado aqui</span>
           )}
@@ -36,10 +38,16 @@ const SelectHero = () => {
         {/* menu */}
         <div className="menu-select">
           <Link to="/">
-            <button>início</button>
+            <button>
+              início{' '}
+              <span className="material-symbols-outlined">navigate_before</span>
+            </button>
           </Link>
           <Link to="/select-item">
-            <button disabled={!hero}>próximo</button>
+            <button disabled={!hero}>
+              próximo{' '}
+              <span className="material-symbols-outlined">navigate_next</span>
+            </button>
           </Link>
         </div>
 

@@ -17,13 +17,21 @@ const Card = ({ data, handleClick, type = 'none', disabled }) => {
         <span>MP: {data.mana}</span>
       </div>
 
-      {type === 'shop' && <button onClick={handleClick}>buy</button>}
+      {type === 'shop' && (
+        <button className="width100" onClick={handleClick}>
+          buy
+        </button>
+      )}
       {type === 'use' && (
-        <button disabled={disabled} onClick={handleClick}>
+        <button className="width100" disabled={disabled} onClick={handleClick}>
           use
         </button>
       )}
-      {type === 'select' && <button onClick={handleClick}>selecionar</button>}
+      {type === 'select' && (
+        <button className="width100" onClick={handleClick}>
+          selecionar
+        </button>
+      )}
     </div>
   );
 };

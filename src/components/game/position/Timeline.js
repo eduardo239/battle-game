@@ -1,9 +1,25 @@
-import React from 'react'
+import React from 'react';
+import Position from './Position';
 
-const Timeline = () => {
+const Timeline = ({ game }) => {
   return (
-    <div>Timeline</div>
-  )
-}
+    <>
+      {game.map ? (
+        game.mapPositions.map((position, index) => (
+          <Position
+            key={position.id}
+            data={position}
+            index={index}
+            heroPosition={game.heroPosition}
+          />
+        ))
+      ) : (
+        <div className="text-center">
+          <span>Nenhuma informação encontrada</span>
+        </div>
+      )}
+    </>
+  );
+};
 
-export default Timeline
+export default Timeline;

@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { HEALTH, MANA } from '../../../utils/constants';
 import { random } from '../../../utils';
 import { GameContext } from '../../../context/Game';
 import { HeroContext } from '../../../context/Hero';
-import ModalItems from './fight/ModalItems';
+import ModalItems from './UserItems';
 import ModalMagic from './fight/ModalMagic';
 import Log from './fight/Log';
 import Play from './fight/Play';
 import Fight from './fight/Fight';
 import Turn from './fight/Turn';
+import LevelUp from './fight/LevelUp';
 
 const ModalFight = ({ show, setModalFight }) => {
   const { hero, setHero } = useContext(HeroContext);
@@ -21,7 +21,7 @@ const ModalFight = ({ show, setModalFight }) => {
     setFightLog,
     resetFight,
   } = useContext(GameContext);
-  const [modalInventory, setModalInventory] = useState(false);
+  const [modalItem, setModalItem] = useState(false);
   const [modalUserMagic, setModalUserMagic] = useState(false);
 
   const enemyTurn = () => {
@@ -38,54 +38,6 @@ const ModalFight = ({ show, setModalFight }) => {
 
       setFightLog([...fightLog, _sta]);
     }, 1000);
-  };
-
-  const handleUseItem = data => {
-    let arrItems = hero.items.filter(i => i.id !== data.id);
-    let _itx = '';
-
-    switch (data.type) {
-      case MANA:
-        // TODO: validar mana maxima
-        setHero({ ...hero, items: arrItems, mana: hero.mana + data.value });
-        _itx =
-          'O Herói usou ' +
-          data.name +
-          ' e aumentou ' +
-          data.value +
-          ' de mana.';
-        break;
-      case HEALTH:
-        // TODO: validar vida maxima
-        setHero({ ...hero, items: arrItems, health: hero.health + data.value });
-        _itx =
-          'O Herói usou ' +
-          data.name +
-          ' e curou ' +
-          data.value +
-          ' de sua vida.';
-        break;
-      case HEALTH:
-        // TODO: validar vida maxima
-        // Aplicar condicao de envenenado ao inimigo
-        _itx =
-          'O Herói usou ' +
-          data.name +
-          ' e envenenou ' +
-          data.value +
-          ' o inimigo.';
-        break;
-      default:
-        break;
-    }
-
-    setFightLog([...fightLog, _itx]);
-    setFight({
-      ...fight,
-      turn: 1,
-    });
-
-    setModalInventory(false);
   };
 
   const hit = () => {
@@ -201,8 +153,12 @@ const ModalFight = ({ show, setModalFight }) => {
   if (hero)
     return (
       <>
+        {/*  */}
         <div className={`modal-container ${show ? 'active' : ''}`}>
           <div className={`modal ${show ? 'active' : ''}`}>
+            <LevelUp hero={hero} />
+
+            {/*  */}
             <h3>Luta</h3>
 
             {/*  */}
@@ -218,7 +174,7 @@ const ModalFight = ({ show, setModalFight }) => {
               hero={hero}
               hit={hit}
               setModalUserMagic={setModalUserMagic}
-              setModalInventory={setModalInventory}
+              setModalItem={setModalItem}
             />
 
             {/*  */}
@@ -229,12 +185,7 @@ const ModalFight = ({ show, setModalFight }) => {
         </div>
 
         {/* inventario */}
-        <ModalItems
-          modalInventory={modalInventory}
-          setModalInventory={setModalInventory}
-          hero={hero}
-          handleUseItem={handleUseItem}
-        />
+        <ModalItems show={modalItem} setModalItem={setModalItem} />
 
         {/* magia */}
         <ModalMagic

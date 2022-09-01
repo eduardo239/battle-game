@@ -59,10 +59,14 @@ const SelectMap = () => {
         {/* menu */}
         <div className="menu-select">
           <Link to="/select-item">
-            <button>voltar</button>
+            <button>
+              voltar{' '}
+              <span className="material-symbols-outlined">navigate_before</span>{' '}
+            </button>
           </Link>
           <button onClick={initGame} disabled={!map}>
-            começar
+            começar{' '}
+            <span className="material-symbols-outlined">navigate_next</span>
           </button>
         </div>
 

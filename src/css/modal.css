@@ -27,6 +27,7 @@
   opacity: 0;
   padding: 2rem;
   display: none;
+  border-top: 2px solid var(--primary);
 }
 
 .modal.active {
@@ -34,7 +35,7 @@
   animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   display: block;
 }
-
+/* 
 .modal-inventory-container {
   background-color: var(--opacity80);
   width: 100%;
@@ -72,7 +73,7 @@
   animation: showUp 0.2s forwards;
   animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   display: block;
-}
+} */
 
 @keyframes showUp {
   to {

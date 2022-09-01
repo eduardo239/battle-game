@@ -6,7 +6,9 @@ const Card = ({ data, handleClick, type = 'none' }) => {
     return (
       <div className="card">
         {type === 'shop' && <span>{data.price}</span>}
-        <div className="card-image">
+        <div
+          className={`card-image ${data.health <= 0 ? 'filter-grayscale' : ''}`}
+        >
           <img src={URL_IMG + data.poster} alt={data.name} />
         </div>
         <div className="card-content">

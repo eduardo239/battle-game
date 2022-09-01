@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { GameContext } from '../context/Game';
 import { HeroContext } from '../context/Hero';
 import Hero from '../components/game/card/HeroInline';
-import Position from '../components/game/position/Position';
 import ModalShop from '../components/game/modal/Shop';
-import ModalItem from '../components/game/modal/ModalItem';
+import ModalItem from '../components/game/modal/UserItems';
 import ModalTrap from '../components/game/modal/Trap';
 import ModalFight from '../components/game/modal/ModalFight';
 import ModalUserItems from '../components/game/modal/UserItems';
 import { BOSS, ENEMY, ITEM, NULL, TRAP } from '../utils/constants';
+import Timeline from '../components/game/position/Timeline';
 
 const Game = () => {
   const navigate = useNavigate();
@@ -19,15 +19,11 @@ const Game = () => {
   const { hero } = useContext(HeroContext);
 
   const [modalShop, setModalShop] = useState(false);
-  const [modalItems, setModalItems] = useState(false);
 
   // abre o modal de acordo com a posicao
   const [modalFight, setModalFight] = useState(false);
   const [modalItem, setModalItem] = useState(false);
   const [modalTrap, setModalTrap] = useState(false);
-
-  // insere o objeto da posicao atual no estado
-  const [data, setData] = useState(null);
 
   const reset = () => {
     resetGame();
@@ -59,11 +55,11 @@ const Game = () => {
             break;
           case ITEM:
             setModalItem(true);
-            setData(actualPosition);
+
             break;
           case TRAP:
             setModalTrap(true);
-            setData(actualPosition);
+
             break;
           case BOSS:
             break;
@@ -82,54 +78,25 @@ const Game = () => {
     <div className="game-container">
       {/* hero */}
       {hero && <Hero data={hero} />}
-
       {/* timeline */}
-      {game.map ? (
-        game.mapPositions.map((position, index) => (
-          <Position
-            key={position.id}
-            data={position}
-            index={index}
-            heroPosition={game.heroPosition}
-          />
-        ))
-      ) : (
-        <span>Nenhuma informação encontrada</span>
-      )}
-
+      <Timeline game={game} />
       {/* modal shop */}
       <ModalShop show={modalShop} setModalShop={setModalShop} />
-
       {/* modal itens do ususario */}
-      <ModalUserItems show={modalItems} setModalItems={setModalItems} />
-
+      <ModalUserItems show={modalItem} setModalItem={setModalItem} />
       {/* game modal luta */}
-      <ModalFight
-        show={modalFight}
-        setModalFight={setModalFight}
-        setData={setData}
-      />
+      <ModalFight show={modalFight} setModalFight={setModalFight} />
       {/* game modal item */}
-      <ModalItem
-        show={modalItem}
-        setModalItem={setModalItem}
-        setData={setData}
-        data={data || {}}
-      />
+      <ModalItem show={modalItem} setModalItem={setModalItem} />
       {/* game modal trap */}
-      <ModalTrap
-        show={modalTrap}
-        setModalTrap={setModalTrap}
-        setData={setData}
-        data={data || {}}
-      />
+      <ModalTrap show={modalTrap} setModalTrap={setModalTrap} />
       {/* game modal boss */}
 
       {/* game menu */}
       <div className="game-menu">
         <button onClick={() => play()}>jogar</button>
-        <button onClick={() => setModalShop(!modalShop)}>shop</button>
-        <button onClick={() => setModalItems(!modalItems)}>inventário</button>
+        <button onClick={() => setModalShop(!modalShop)}>loja</button>
+        <button onClick={() => setModalItem(!modalItem)}>inventário</button>
         <button onClick={() => reset()}>reiniciar</button>
         <button>salvar</button>
       </div>

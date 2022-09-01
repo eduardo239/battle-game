@@ -16,7 +16,8 @@
     "gold": 40,
     "victories": 0,
     "equipped": {
-      "weapon": null
+      "weapon": null,
+      "poison": false
     },
     "status": {
       "poisoned": false,
@@ -37,10 +38,11 @@
     "items": [],
     "weapons": [],
     "magic": [],
-    "gold": 0,
+    "gold": 3330,
     "victories": 0,
     "equipped": {
-      "weapon": null
+      "weapon": null,
+      "poison": false
     },
     "status": {
       "poisoned": false,
@@ -64,7 +66,8 @@
     "gold": 0,
     "victories": 0,
     "equipped": {
-      "weapon": null
+      "weapon": null,
+      "poison": false
     },
     "status": {
       "poisoned": false,
@@ -87,7 +90,8 @@
     "gold": 0,
     "victories": 0,
     "equipped": {
-      "weapon": null
+      "weapon": null,
+      "poison": false
     },
     "status": {
       "poisoned": false,

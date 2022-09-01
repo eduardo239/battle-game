@@ -42,9 +42,9 @@
   {
     "id": 9,
     "name": "Veneno (SM)",
-    "description": "Causa 10% de dano no inimigo, por rodada.",
+    "description": "Causa 10% de dano no inimigo, por 3 rodadas.",
     "rarity": "normal",
-    "type": "bomb",
+    "type": "poison",
     "price": 90,
     "value": 50,
     "poster": "items/poison1.png"

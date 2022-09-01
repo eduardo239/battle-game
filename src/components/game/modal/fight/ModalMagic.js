@@ -8,13 +8,16 @@ const ModalMagic = ({
   handleUseMagic,
 }) => {
   return (
-    <div
-      className={`modal-inventory-container ${modalUserMagic ? 'active' : ''}`}
-    >
-      <div className={`modal-inventory ${modalUserMagic ? 'active' : ''}`}>
-        <button onClick={() => setModalUserMagic(false)}>fechar</button>
+    <div className={`modal-container ${modalUserMagic ? 'active' : ''}`}>
+      <div className={`modal ${modalUserMagic ? 'active' : ''}`}>
+        <div className="flex-justify-between">
+          <h1>Magias</h1>
+          <h3 className="color-warning ">
+            Mana disponível: {(hero && hero.mana) || 0}
+          </h3>
+          <button onClick={() => setModalUserMagic(false)}>fechar</button>
+        </div>
 
-        <h1>Magias</h1>
         <div className="grid-container">
           {hero && hero.magic.length > 0 ? (
             hero.magic

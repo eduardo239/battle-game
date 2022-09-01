@@ -7,12 +7,19 @@ const Turn = ({ fight }) => {
         <small>Rodada: {fight.round || 0}</small>
       </div>
       <div>
-        <small>
-          Vez de jogar:{' '}
-          {fight.turn === 0
-            ? 'Vez do Herói de jogar'
-            : 'O Inimigo está atacando ....'}
-        </small>
+        {!fight.end ? (
+          <small>
+            Vez de jogar:{' '}
+            {fight.turn === 0
+              ? ' Vez do Herói de jogar'
+              : ' O Inimigo está atacando ....'}
+          </small>
+        ) : (
+          <small>
+            Fim da luta:
+            {fight.winner === 0 ? ' O herói venceu !' : ' O Inimigo venceu !'}
+          </small>
+        )}
       </div>
     </>
   );
