@@ -5,7 +5,9 @@ const HeroInline = ({ data }) => {
   if (data)
     return (
       <div className="hero-inline-container">
-        <div className="card-image">
+        <div
+          className={`card-image ${data.health <= 0 ? 'filter-grayscale' : ''}`}
+        >
           <img src={URL_IMG + data.poster} alt={data.name} />
         </div>
         <div className="flex-1">

@@ -6,6 +6,8 @@ import maps_api from '../api/maps.json';
 import enemies_api from '../api/enemies.json';
 import magic_api from '../api/magic.json';
 import weapons_api from '../api/weapons.json';
+import traps_api from '../api/traps.json';
+import { ITEM, TRAP } from '../utils/constants';
 
 const GameContext = React.createContext();
 const GameProvider = GameContext.Provider;
@@ -17,6 +19,7 @@ const ContextGame = ({ children }) => {
   const [enemies, setEnemies] = useState([]);
   const [weapons, setWeapos] = useState([]);
   const [magic, setMagic] = useState([]);
+  const [traps, setTraps] = useState([]);
 
   // dados das posicoes
   const [enemy, setEnemy] = useState(null);
@@ -27,6 +30,10 @@ const ContextGame = ({ children }) => {
 
   // mapa selecionado
   const [map, setMap] = useState(null);
+
+  // gift item
+  const [randomItem, setRandomItem] = useState(null);
+  const [randomTrap, setRandomTrap] = useState(null);
 
   // estado do jogo
   const [game, setGame] = useState({
@@ -66,6 +73,23 @@ const ContextGame = ({ children }) => {
     });
   };
 
+  const getRandomItem = arr => {
+    switch (arr) {
+      case ITEM:
+        setRandomItem(items[Math.floor(Math.random() * items.length)]);
+        break;
+      case TRAP:
+        setRandomTrap(traps[Math.floor(Math.random() * traps.length)]);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const resetRandomItem = () => setRandomItem(null);
+  const resetRandomTrap = () => setRandomTrap(null);
+
   useEffect(() => {
     let mounted = true;
 
@@ -82,6 +106,8 @@ const ContextGame = ({ children }) => {
       if (weapons.length === 0) setWeapos(weapons_api);
       // carregar as magicas da api
       if (magic.length === 0) setMagic(magic_api);
+      // carregar as traps da api
+      if (traps.length === 0) setTraps(traps_api);
     }
     return () => {
       mounted = false;
@@ -111,6 +137,11 @@ const ContextGame = ({ children }) => {
         setFightLog,
         resetGame,
         resetFight,
+        randomItem,
+        getRandomItem,
+        randomTrap,
+        resetRandomItem,
+        resetRandomTrap,
       }}
     >
       {children}

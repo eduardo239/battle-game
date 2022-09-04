@@ -12,7 +12,7 @@ const LevelUp = ({ hero }) => {
 
         setTimeout(() => {
           setActiveClass(false);
-        }, 3000);
+        }, 1000);
       }
     }
 
@@ -24,7 +24,8 @@ const LevelUp = ({ hero }) => {
   return (
     <div className={`level-up ${activeClass ? 'active' : ''}`}>
       <span>
-        Subiu para o nível: <b> {hero.level || 0}</b>
+        Subiu para o nível: {` `}
+        <b>{hero.level || 0}</b>
       </span>
     </div>
   );

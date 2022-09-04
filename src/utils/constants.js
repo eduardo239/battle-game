@@ -5,8 +5,13 @@ export const TRAP = 'trap';
 export const BOSS = 'boss';
 export const INIT = 'init';
 
-export const LEVEL_EASY = [ENEMY, ENEMY, ENEMY];
-export const LEVEL_MEDIUM = 'medium';
+export const BOMB = 'bomb';
+
+export const LEVEL_BASE = [NULL, ENEMY, TRAP, ITEM];
+export const LEVEL_EASY = [NULL, ENEMY, ENEMY, ITEM].concat(LEVEL_BASE);
+export const LEVEL_MEDIUM = [NULL, ENEMY, ENEMY, ENEMY, ITEM].concat(
+  LEVEL_BASE
+);
 export const LEVEL_HARD = 'hard';
 
 export const MANA = 'mana';

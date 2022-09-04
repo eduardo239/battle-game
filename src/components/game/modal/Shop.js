@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { GameContext } from '../../../context/Game';
 import { HeroContext } from '../../../context/Hero';
-import { v4 as uuidv4 } from 'uuid';
-import Card from '../card/Item';
+import { messageHandler } from '../../../utils/game';
+import CardItem from '../card/Item';
+import CardWeapon from '../card/Weapon';
 import Toast from '../../ui/Toast';
 import { SUCCESS, WARNING } from '../../../utils/constants';
-import { messageHandler } from '../../../utils/game';
+import { isObjectEmpty } from '../../../utils';
 
 const Shop = ({ show, setModalShop }) => {
-  const { items } = useContext(GameContext);
+  const { items, weapons } = useContext(GameContext);
   const { hero, setHero } = useContext(HeroContext);
 
   const [message, setMessage] = useState({
@@ -17,8 +19,8 @@ const Shop = ({ show, setModalShop }) => {
   });
 
   const handleBuy = data => {
-    if (hero.gold >= data.price) {
-      if (hero) {
+    if (!isObjectEmpty(hero)) {
+      if (hero.gold >= data.price) {
         // compra de item e adiciona a lista do heroi
         let newGold = hero.gold - data.price;
         let i = { ...data, id: uuidv4() };
@@ -26,9 +28,11 @@ const Shop = ({ show, setModalShop }) => {
 
         setHero({ ...hero, items: newItems, gold: newGold });
         messageHandler(SUCCESS, 'Item comprado com sucesso!', setMessage);
+      } else {
+        messageHandler(WARNING, 'Sem ouro suficiente para compra!', setMessage);
       }
     } else {
-      messageHandler(WARNING, 'Sem ouro suficiente para compra!', setMessage);
+      messageHandler(WARNING, 'O herói não foi selecionado!', setMessage);
     }
   };
 
@@ -44,13 +48,31 @@ const Shop = ({ show, setModalShop }) => {
             <button onClick={() => setModalShop(false)}>fechar</button>
           </div>
 
+          <h3>Itens</h3>
           <div className="card-container">
             {items.length > 0 ? (
               items.map(item => (
-                <Card
+                <CardItem
                   key={item.id}
                   data={item}
                   handleClick={() => handleBuy(item)}
+                  type="shop"
+                />
+              ))
+            ) : (
+              <span>Nada encontrado aqui</span>
+            )}
+          </div>
+
+          {/* armas */}
+          <h3>Armas</h3>
+          <div className="card-container">
+            {weapons.length > 0 ? (
+              weapons.map(weapon => (
+                <CardWeapon
+                  key={weapon.id}
+                  data={weapon}
+                  handleClick={() => handleBuy(weapon)}
                   type="shop"
                 />
               ))

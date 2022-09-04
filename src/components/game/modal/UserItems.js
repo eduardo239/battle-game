@@ -17,8 +17,6 @@ const UserItems = ({ show, setModalItem }) => {
     let arrItems = hero.items.filter(i => i.id !== data.id);
     let _itx = '';
 
-    console.log(data);
-    console.log(hero.items);
     switch (data.type) {
       case MANA:
         // TODO: validar mana maxima
@@ -65,33 +63,39 @@ const UserItems = ({ show, setModalItem }) => {
         break;
     }
     setTimeout(() => setMessage({ type: '', content: '' }), 2000);
+    setModalItem(false);
   };
 
   return (
-    <div className={`modal-container ${show ? 'active' : ''}`}>
-      <div className={`modal ${show ? 'active' : ''}`}>
-        <Toast message={message.content} type={message.type} />
-        <div className="flex-justify-between">
-          <h1>Inventário</h1>
-          <button onClick={() => setModalItem(false)}>fechar</button>
-        </div>
+    <>
+      <div className={`modal-container ${show ? 'active' : ''}`}>
+        <div className={`modal ${show ? 'active' : ''}`}>
+          <div className="flex-justify-between">
+            <h1>Inventário</h1>
+            <button onClick={() => setModalItem(false)}>fechar</button>
+          </div>
 
-        <div className="grid-container">
-          {hero && hero.items.length > 0 ? (
-            hero.items.map(item => (
-              <Card
-                key={Math.random()}
-                data={item}
-                handleClick={() => handleUse(item)}
-                type="use"
-              />
-            ))
-          ) : (
-            <span>Nada encontrado aqui</span>
-          )}
+          <div className="grid-container">
+            {hero && hero.items.length > 0 ? (
+              hero.items.map(item => (
+                <Card
+                  key={Math.random()}
+                  data={item}
+                  handleClick={() => handleUse(item)}
+                  type="use"
+                />
+              ))
+            ) : (
+              <span>Nada encontrado aqui</span>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+
+      {message && message.content && (
+        <Toast type={message.type} message={message.content} />
+      )}
+    </>
   );
 };
 

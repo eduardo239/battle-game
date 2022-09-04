@@ -13,19 +13,21 @@
 }
 
 .hero-inline {
-  position: sticky;
-  top: 0;
-  left: 0;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
   background: var(--secondary);
   color: var(--dark);
-  justify-content: space-between;
-  padding: 0 1rem;
-  align-items: center;
+  display: grid;
   flex: 1;
+  gap: 4px;
+  grid-template-columns: repeat(7, 1fr);
+  justify-content: space-between;
+  left: 0;
+  padding: 0 0.75rem;
+  position: sticky;
+  top: 0;
 }
 
 .hero-inline span {
   font-size: 0.85rem;
+  line-height: 1.4;
 }

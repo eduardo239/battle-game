@@ -59,7 +59,6 @@
   left: 0;
   z-index: 300;
   width: 100%;
-  background: var(--dark);
   padding: 1rem;
   display: none;
   transform: translateY(-60px);
@@ -67,15 +66,18 @@
 }
 
 .message.success {
-  color: var(--green);
+  color: var(--dark);
+  background: var(--light);
 }
 
 .message.warning {
-  color: var(--warning);
+  color: var(--dark);
+  background: var(--light);
 }
 
 .message.error {
-  color: var(--error);
+  color: var(--dark);
+  background: var(--light);
 }
 
 .message.success,
@@ -98,14 +100,14 @@
   top: 0;
   left: 0;
   width: 100%;
-  transform: translateY(-30px);
+  transform: translateY(-60px);
   opacity: 0;
 }
 
 .level-up.active {
   animation: levelUp 0.6s forwards;
   animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-  top: -30px;
+  top: 0px;
 }
 
 .level-up span {

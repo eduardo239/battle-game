@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Bomb (SM)",
+    "description": "Causa uma certa quantidade de dano ao herói.",
+    "type": "bomb",
+    "min": 30,
+    "max": 90,
+    "poster": "traps/bomb1.png"
+  },
+  {
+    "id": 2,
+    "name": "Bomb (MD)",
+    "description": "Causa uma certa quantidade de dano ao herói.",
+    "type": "bomb",
+    "min": 45,
+    "max": 125,
+    "poster": "traps/bomb1.png"
+  }
+]

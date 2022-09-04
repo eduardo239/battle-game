@@ -1,35 +1,35 @@
 [
   {
     "id": 1,
-    "name": "Espada (SM)",
+    "name": "Espada (NM)",
     "description": "Espada grande, com pequeno dano físico",
     "rarity": "normal",
     "type": "normal",
     "price": 100,
-    "min": 15,
-    "max": 25,
-    "poster": "items/potion1.png"
+    "min": 25,
+    "max": 50,
+    "poster": "weapons/sword1.png"
   },
   {
     "id": 2,
-    "name": "Espada (MD)",
+    "name": "Espada (RR)",
     "description": "Espada grande, com médio dano físico",
     "rarity": "rare",
     "type": "normal",
-    "price": 180,
-    "min": 30,
-    "max": 45,
-    "poster": "items/potion1.png"
+    "price": 280,
+    "min": 40,
+    "max": 80,
+    "poster": "weapons/sword2.png"
   },
   {
     "id": 3,
-    "name": "Espada (BG)",
+    "name": "Espada (SR)",
     "description": "Espada grande, com grande dano físico",
-    "rarity": "super rare",
+    "rarity": "s. rare",
     "type": "normal",
-    "price": 90,
-    "min": 75,
-    "max": 105,
-    "poster": "items/mana1.png"
+    "price": 490,
+    "min": 65,
+    "max": 130,
+    "poster": "weapons/sword3.png"
   }
 ]
