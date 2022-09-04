@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { random } from '../../../utils';
+import { getNextLevel, random } from '../../../utils';
 import { GameContext } from '../../../context/Game';
 import { HeroContext } from '../../../context/Hero';
 import Log from './fight/Log';
@@ -112,25 +112,23 @@ const ModalFight = ({ show, setModalFight }) => {
       } else if (enemy.health <= 0) {
         let _itx = 'O inimigo foi derrotado';
         setFightLog([...fightLog, _itx]);
-        setFight({
-          ...fight,
-          winner: 0,
-          end: true,
-        });
+        setFight({ ...fight, winner: 0, end: true });
 
         // validar o exp atual e realizar a evolucao do heroi
         let _pex = Math.floor(55 + hero.nextLevel / (hero.level * 10));
         if (hero.exp + _pex > hero.nextLevel) {
-          let _nxo = hero.exp + _pex - hero.nextLevel;
-          let _dpp = Math.floor(hero.nextLevel + hero.nextLevel / 2);
+          // calcular a quantidade de experiencia para o proximo nivel
+          let _nxt = getNextLevel(hero.level + 1);
+          let _exl = hero.exp + _pex - hero.nextLevel;
+          // let _nxl = Math.floor(hero.nextLevel + hero.nextLevel / 2);
           // evolução do herói
           setHero({
             ...hero,
             gold: hero.gold + 65,
-            exp: _nxo,
+            exp: _exl,
             victories: hero.victories + 1,
             level: hero.level + 1,
-            nextLevel: _dpp,
+            nextLevel: _nxt,
           });
         } else {
           setHero({

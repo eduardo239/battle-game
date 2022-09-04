@@ -35,6 +35,9 @@ const ContextGame = ({ children }) => {
   const [randomItem, setRandomItem] = useState(null);
   const [randomTrap, setRandomTrap] = useState(null);
 
+  // dice
+  const [dice, setDice] = useState(0);
+
   // estado do jogo
   const [game, setGame] = useState({
     map: null,
@@ -42,6 +45,7 @@ const ContextGame = ({ children }) => {
     mapLength: 0,
     heroPosition: 0,
     end: false,
+    playing: false,
   });
 
   // estado da luta
@@ -60,6 +64,7 @@ const ContextGame = ({ children }) => {
       mapLength: 0,
       heroPosition: 0,
       end: false,
+      playing: false,
     });
   };
 
@@ -129,6 +134,7 @@ const ContextGame = ({ children }) => {
         item,
         fight,
         fightLog,
+        dice,
         setMap,
         setGame,
         setFight,
@@ -142,6 +148,7 @@ const ContextGame = ({ children }) => {
         randomTrap,
         resetRandomItem,
         resetRandomTrap,
+        setDice,
       }}
     >
       {children}

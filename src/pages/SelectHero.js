@@ -3,6 +3,7 @@ import CardHero from '../components/game/card/Hero';
 import { Link } from 'react-router-dom';
 import { GameContext } from '../context/Game';
 import { HeroContext } from '../context/Hero';
+import { getNextLevel } from '../utils';
 import { URL_UNK } from '../utils/constants';
 
 const SelectHero = () => {
@@ -11,7 +12,8 @@ const SelectHero = () => {
 
   const handleSelectThis = data => {
     // adicionar o heroi
-    setHero(data);
+    let _nxt = getNextLevel(data.level);
+    setHero({ ...data, nextLevel: _nxt });
   };
 
   return (

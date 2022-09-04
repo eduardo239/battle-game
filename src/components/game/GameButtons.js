@@ -10,18 +10,26 @@ const GameButtons = ({
   modalItem,
 }) => {
   return (
-    <div className="game-menu">
-      <button disabled={game.end} onClick={() => play()}>
+    <div className="game-menu-buttons">
+      <button disabled={game.playing || game.end} onClick={() => play()}>
         jogar
       </button>
-      <button disabled={game.end} onClick={() => setModalShop(!modalShop)}>
+      <button
+        disabled={game.playing || game.end}
+        onClick={() => setModalShop(!modalShop)}
+      >
         loja
       </button>
-      <button disabled={game.end} onClick={() => setModalItem(!modalItem)}>
+      <button
+        disabled={game.playing || game.end}
+        onClick={() => setModalItem(!modalItem)}
+      >
         inventário
       </button>
-      <button onClick={() => reset()}>reiniciar</button>
-      <button>salvar</button>
+      <button disabled={game.playing} onClick={() => reset()}>
+        reiniciar
+      </button>
+      <button disabled={game.playing}>salvar</button>
     </div>
   );
 };

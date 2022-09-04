@@ -1,24 +1,24 @@
-import React, { useContext, useState } from 'react';
-import { random } from '../utils';
+import React, { useContext, useEffect, useState } from 'react';
+import { diceAnimation } from '../utils';
 import { useNavigate } from 'react-router-dom';
 import { GameContext } from '../context/Game';
 import { HeroContext } from '../context/Hero';
 import Hero from '../components/game/card/HeroInline';
+import GameMenu from '../components/game/GameMenu';
+import Timeline from '../components/game/position/Timeline';
 import ModalShop from '../components/game/modal/Shop';
-import ModalGiftItem from '../components/game/modal/ModalItem';
 import ModalTrap from '../components/game/modal/Trap';
 import ModalFight from '../components/game/modal/ModalFight';
+import ModalGiftItem from '../components/game/modal/ModalItem';
 import ModalUserItems from '../components/game/modal/UserItems';
-import Timeline from '../components/game/position/Timeline';
 import { BOSS, ENEMY, ITEM, NULL, TRAP } from '../utils/constants';
-import GameButtons from '../components/game/GameButtons';
 
 const Game = () => {
   const navigate = useNavigate();
 
-  const { game, setGame, setEnemy, setFightLog, resetGame } =
-    useContext(GameContext);
   const { hero, setHero } = useContext(HeroContext);
+  const { dice, setDice, game, setGame, setEnemy, setFightLog, resetGame } =
+    useContext(GameContext);
 
   // modal shop
   const [modalShop, setModalShop] = useState(false);
@@ -29,22 +29,50 @@ const Game = () => {
   const [modalGiftItem, setModalGiftItem] = useState(false);
   const [modalTrap, setModalTrap] = useState(false);
 
+  // validar se os dados estao sendo atualizados
+  const [updatedDice, setUpdatedDice] = useState(false);
+
   const reset = () => {
     resetGame();
     setHero(null);
-    setTimeout(() => navigate('/'), 0);
+    setTimeout(() => navigate('/'), 5);
   };
+
+  useEffect(() => {
+    let mounted = true;
+    // movimenta para proxima posicao apos animacao dos dados
+    if (updatedDice && mounted) {
+      playUpdateStats();
+    }
+
+    return () => {
+      mounted = false;
+      setUpdatedDice(false);
+    };
+  }, [updatedDice]);
 
   const play = () => {
     if (game.mapLength === 0) {
-      // TODO: EMPTY MAP
       return;
     } else if (game.heroPosition < game.mapLength) {
-      let _apd = random(1, 6);
-      setGame({ ...game, heroPosition: game.heroPosition + _apd });
+      // efeito de animacao dos dados
+      setGame({ ...game, playing: true });
+      diceAnimation(setDice, setUpdatedDice);
+    } else {
+      alert('Boss');
+    }
+  };
 
+  const playUpdateStats = () => {
+    setGame({
+      ...game,
+      heroPosition: game.heroPosition + dice,
+      playing: false,
+    });
+
+    setTimeout(() => {
       // verifica o tipo de posicao atual
-      let actualPosition = game.mapPositions[game.heroPosition + _apd];
+      let actualPosition = game.mapPositions[game.heroPosition + dice];
 
       // verifica o tipo da posicao do mapa
       if (!actualPosition) {
@@ -74,9 +102,7 @@ const Game = () => {
             break;
         }
       }
-    } else {
-      alert('Boss');
-    }
+    }, 1000);
   };
 
   return (
@@ -97,8 +123,7 @@ const Game = () => {
       <ModalTrap show={modalTrap} setModalTrap={setModalTrap} />
       {/* game modal boss */}
 
-      {/* game menu */}
-      <GameButtons
+      <GameMenu
         game={game}
         play={play}
         reset={reset}
