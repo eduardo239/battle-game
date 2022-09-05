@@ -107,7 +107,7 @@ const Game = () => {
 
   return (
     <div className="game-container">
-      {/* hero */}
+      {/* informacoes sobre o heroi*/}
       {hero && <Hero data={hero} />}
       {/* timeline */}
       <Timeline game={game} />
@@ -121,8 +121,7 @@ const Game = () => {
       <ModalGiftItem show={modalGiftItem} setModalGiftItem={setModalGiftItem} />
       {/* game modal trap */}
       <ModalTrap show={modalTrap} setModalTrap={setModalTrap} />
-      {/* game modal boss */}
-
+      {/* game menu */}
       <GameMenu
         game={game}
         play={play}
