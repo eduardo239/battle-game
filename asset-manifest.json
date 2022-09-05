@@ -1,13 +1,13 @@
 {
   "main.css": "/card-game/static/css/main.3cb8a723.chunk.css",
-  "main.js": "/card-game/static/js/main.f22bd554.chunk.js",
-  "main.js.map": "/card-game/static/js/main.f22bd554.chunk.js.map",
+  "main.js": "/card-game/static/js/main.969683e7.chunk.js",
+  "main.js.map": "/card-game/static/js/main.969683e7.chunk.js.map",
   "runtime~main.js": "/card-game/static/js/runtime~main.d44b1061.js",
   "runtime~main.js.map": "/card-game/static/js/runtime~main.d44b1061.js.map",
   "static/js/2.81d6d09b.chunk.js": "/card-game/static/js/2.81d6d09b.chunk.js",
   "static/js/2.81d6d09b.chunk.js.map": "/card-game/static/js/2.81d6d09b.chunk.js.map",
   "index.html": "/card-game/index.html",
-  "precache-manifest.34cdcab07fd60c83032584261a1e7acd.js": "/card-game/precache-manifest.34cdcab07fd60c83032584261a1e7acd.js",
+  "precache-manifest.6d96cdc2894567e7a2de88929caa95bb.js": "/card-game/precache-manifest.6d96cdc2894567e7a2de88929caa95bb.js",
   "service-worker.js": "/card-game/service-worker.js",
   "static/css/main.3cb8a723.chunk.css.map": "/card-game/static/css/main.3cb8a723.chunk.css.map"
 }
