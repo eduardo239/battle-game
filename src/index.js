@@ -19,7 +19,7 @@ root.render(
   <React.StrictMode>
     <ContextGame>
       <ContextHero>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <App />
         </Router>
       </ContextHero>

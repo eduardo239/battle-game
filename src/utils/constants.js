@@ -23,5 +23,7 @@ export const WARNING = 'warning';
 export const ERROR = 'error';
 
 export const URL_IMG = 'http://localhost:3000/images/';
+export const URL_IMG_GH =
+  'https://raw.githubusercontent.com/eduardo239/card-game/main/public/images/';
 export const URL_EMP = 'empty_card.png';
 export const URL_UNK = 'unknow_card.png';

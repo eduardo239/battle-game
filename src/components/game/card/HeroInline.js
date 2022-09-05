@@ -1,5 +1,5 @@
 import React from 'react';
-import { URL_IMG } from '../../../utils/constants';
+import { URL_IMG_GH } from '../../../utils/constants';
 
 const HeroInline = ({ data }) => {
   if (data)
@@ -8,7 +8,7 @@ const HeroInline = ({ data }) => {
         <div
           className={`card-image ${data.health <= 0 ? 'filter-grayscale' : ''}`}
         >
-          <img src={URL_IMG + data.poster} alt={data.name} />
+          <img src={URL_IMG_GH + data.poster} alt={data.name} />
         </div>
         <div className="flex-1">
           <div className="hero-inline">
