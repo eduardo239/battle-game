@@ -37,45 +37,36 @@
   animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   display: block;
 }
-/* 
-.modal-inventory-container {
-  background-color: var(--opacity80);
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 200;
-  opacity: 0;
-  display: none;
-}
 
-.modal-inventory-container.active {
+.modal-confirm-container.active {
   animation: fadeIn 0.1s forwards;
   animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
 }
 
-.modal-inventory {
-  background-color: var(--darkest);
+.modal-confirm-container {
+  background-color: var(--opacity80);
   width: 100%;
-  min-height: 366px;
+  height: 100vh;
+  z-index: 100;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 200;
-  transform: translateY(40px);
   opacity: 0;
   display: none;
-  border-top: 2px solid var(--primary);
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+}
+
+.modal-confirm {
+  background: var(--light);
+  color: var(--dark);
   padding: 2rem;
 }
 
-.modal-inventory.active {
-  animation: showUp 0.2s forwards;
-  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-  display: block;
-} */
+.modal-confirm > div {
+  gap: 1px;
+}
 
 @keyframes showUp {
   to {
