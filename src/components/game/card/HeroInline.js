@@ -30,9 +30,6 @@ const HeroInline = ({ data }) => {
             <span>
               <b>NIVEL</b>
             </span>
-            <span>
-              <b>LEVEL UP</b>
-            </span>
           </div>
           <div className="hero-inline">
             <span>{data.name}</span>
@@ -43,7 +40,6 @@ const HeroInline = ({ data }) => {
               {data.exp}/{data.nextLevel}
             </span>
             <span>{data.level}</span>
-            <span>{data.nextLevel}</span>
           </div>
         </div>
       </div>

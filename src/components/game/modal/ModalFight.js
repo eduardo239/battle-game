@@ -9,6 +9,9 @@ import Fight from './fight/Fight';
 import LevelUp from './fight/LevelUp';
 import ModalItems from './UserItems';
 import ModalMagic from './fight/ModalMagic';
+import Toast from '../../ui/Toast';
+import { messageHandler } from '../../../utils/game';
+import { ERROR } from '../../../utils/constants';
 
 const ModalFight = ({ show, setModalFight }) => {
   const { hero, setHero } = useContext(HeroContext);
@@ -25,6 +28,11 @@ const ModalFight = ({ show, setModalFight }) => {
   } = useContext(GameContext);
   const [modalItem, setModalItem] = useState(false);
   const [modalUserMagic, setModalUserMagic] = useState(false);
+
+  const [message, setMessage] = useState({
+    type: '',
+    content: '',
+  });
 
   /**
    * Causa um dano aleatório ao herói
@@ -74,7 +82,7 @@ const ModalFight = ({ show, setModalFight }) => {
 
   /**
    * Herói foge da batalha, perdendo uma parte do gold
-   * e de experiência se houver experiência para remover
+   * e de experiência se houver experiência
    */
   const flee = () => {
     if (fight.end) {
@@ -84,12 +92,30 @@ const ModalFight = ({ show, setModalFight }) => {
       // sair com prejuizo
       let expHero = hero.exp;
       let expBase = 15;
+      let goldBase = 15;
       if (expHero < expBase) {
-        setHero({ ...hero, gold: hero.gold - 15, exp: 0 });
+        setHero({ ...hero, gold: hero.gold - goldBase, exp: 0 });
+        messageHandler(
+          ERROR,
+          `Removido ${goldBase} de ouro e 0 de experiência!`,
+          setMessage
+        );
       } else {
-        setHero({ ...hero, gold: hero.gold - 15, exp: hero.exp - 15 });
+        setHero({
+          ...hero,
+          gold: hero.gold - goldBase,
+          exp: hero.exp - expBase,
+        });
+        messageHandler(
+          ERROR,
+          `Removido ${goldBase} de ouro e ${expBase} de experiência!`,
+          setMessage
+        );
       }
-      setModalFight(false);
+
+      setTimeout(() => {
+        setModalFight(false);
+      }, 2000);
     }
     resetFight();
   };
@@ -99,9 +125,10 @@ const ModalFight = ({ show, setModalFight }) => {
 
     if (mounted && fight && enemy && hero) {
       if (fight.end) {
-        console.log('Fim do jogo');
+        // TODO: fim do jogo
+        return;
       } else if (fight.turn === 0 && hero.health > 0) {
-        console.log('Vez do heroi');
+        // TODO: fazer nada, vez do heroi
       } else if (fight.turn === 1 && enemy.health > 0) {
         enemyTurn();
       } else if (hero.health <= 0) {
@@ -115,16 +142,19 @@ const ModalFight = ({ show, setModalFight }) => {
         setFight({ ...fight, winner: 0, end: true });
 
         // validar o exp atual e realizar a evolucao do heroi
-        let _pex = Math.floor(55 + hero.nextLevel / (hero.level * 10));
-        if (hero.exp + _pex > hero.nextLevel) {
+        // TODO: configurar a quantidade de exp que o herói recebe
+        let baseExp = 55;
+        let goldBase = 45;
+        let nextExp = Math.floor(baseExp + hero.nextLevel / (hero.level * 10));
+        if (hero.exp + nextExp > hero.nextLevel) {
           // calcular a quantidade de experiencia para o proximo nivel
           let _nxt = getNextLevel(hero.level + 1);
-          let _exl = hero.exp + _pex - hero.nextLevel;
+          let _exl = hero.exp + nextExp - hero.nextLevel;
           // let _nxl = Math.floor(hero.nextLevel + hero.nextLevel / 2);
           // evolução do herói
           setHero({
             ...hero,
-            gold: hero.gold + 65,
+            gold: hero.gold + goldBase,
             exp: _exl,
             victories: hero.victories + 1,
             level: hero.level + 1,
@@ -133,8 +163,8 @@ const ModalFight = ({ show, setModalFight }) => {
         } else {
           setHero({
             ...hero,
-            gold: hero.gold + 55,
-            exp: hero.exp + 55,
+            gold: hero.gold + goldBase,
+            exp: hero.exp + baseExp,
             victories: hero.victories + 1,
           });
         }
@@ -190,6 +220,10 @@ const ModalFight = ({ show, setModalFight }) => {
           hero={hero}
           handleUseMagic={handleUseMagic}
         />
+
+        {message && message.content && (
+          <Toast type={message.type} message={message.content} />
+        )}
       </>
     );
 };

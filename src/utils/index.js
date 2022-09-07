@@ -29,10 +29,11 @@ export const getNextLevel = base => {
   return nextLevel;
 };
 
-// for (let x = 0; x < 100; x++) {
-//   console.log(getNextLevel(x));
-// }
-
+/**
+ *
+ * @param {function} setDice configura o valor do dado no estado atual
+ * @param {function} setUpdatedDice para validar quando a animacao finaliza
+ */
 export const diceAnimation = (setDice, setUpdatedDice) => {
   let _counter = 0;
 
