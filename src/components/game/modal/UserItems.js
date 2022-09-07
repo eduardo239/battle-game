@@ -62,7 +62,10 @@ const UserItems = ({ show, setModalItem }) => {
       default:
         break;
     }
+
     setTimeout(() => setMessage({ type: '', content: '' }), 2000);
+
+    // TODO: alternar turno da batalha ao utilizar o item dentro da batalha
     setModalItem(false);
   };
 
@@ -70,7 +73,7 @@ const UserItems = ({ show, setModalItem }) => {
     <>
       <div className={`modal-container ${show ? 'active' : ''}`}>
         <div className={`modal ${show ? 'active' : ''}`}>
-          <div className="flex-justify-between">
+          <div className="modal-header">
             <h1>Inventário</h1>
             <button onClick={() => setModalItem(false)}>fechar</button>
           </div>

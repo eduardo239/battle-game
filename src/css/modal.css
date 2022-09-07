@@ -29,7 +29,8 @@
   border-top: 2px solid var(--primary);
   overflow-y: scroll;
   min-height: 366px;
-  max-height: 90vh;
+  max-height: 80vh;
+  margin-top: 100px;
 }
 
 .modal.active {
@@ -79,4 +80,15 @@
   to {
     opacity: 1;
   }
+}
+
+.modal-header {
+  position: sticky;
+  left: 0;
+  top: 0;
+  background: var(--dark);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

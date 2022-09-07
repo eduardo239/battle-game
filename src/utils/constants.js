@@ -8,7 +8,7 @@ export const INIT = 'init';
 export const BOMB = 'bomb';
 
 export const LEVEL_BASE = [NULL, ENEMY, TRAP, ITEM];
-export const LEVEL_EASY = [NULL, ENEMY, ENEMY, ITEM].concat(LEVEL_BASE);
+export const LEVEL_EASY = [ENEMY, ENEMY].concat(LEVEL_BASE);
 export const LEVEL_MEDIUM = [NULL, ENEMY, ENEMY, ENEMY, ITEM].concat(
   LEVEL_BASE
 );

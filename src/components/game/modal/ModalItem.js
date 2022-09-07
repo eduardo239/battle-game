@@ -42,14 +42,14 @@ const ModalItem = ({ show, setModalGiftItem }) => {
       <>
         <div className={`modal-container ${show ? 'active' : ''}`}>
           <div className={`modal ${show ? 'active' : ''}`}>
-            <div className="flex-justify-between">
+            <div className="modal-header">
               <h1>Presente</h1>
               <button onClick={() => setModalGiftItem(false)}>
                 fechar
               </button>{' '}
             </div>
 
-            <div className="grid-container">
+            <div className="flex-justify-center">
               <CardItem
                 key={Math.random()}
                 data={randomItem}

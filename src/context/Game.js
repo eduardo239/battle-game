@@ -55,6 +55,8 @@ const ContextGame = ({ children }) => {
     end: false,
     turn: 0,
     winner: null,
+    heroAttack: false,
+    enemyAttack: false,
   });
 
   const resetGame = () => {
@@ -75,6 +77,8 @@ const ContextGame = ({ children }) => {
       end: false,
       turn: 0,
       winner: null,
+      heroAttack: false,
+      enemyAttack: false,
     });
   };
 

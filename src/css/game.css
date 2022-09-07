@@ -86,15 +86,15 @@
 .message.success,
 .message.warning,
 .message.error {
-  animation: showUp 0.2s forwards;
+  animation: toast 0.2s forwards;
   animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   display: block;
 }
 
-@keyframes showUp {
+@keyframes toast {
   to {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(100px);
   }
 }
 
@@ -155,4 +155,64 @@
 .dice.active {
   border: 2px solid var(--primary);
   color: var(--primary);
+}
+
+.hero-hit,
+.enemy-hit {
+  top: 0;
+  left: 0;
+  position: relative;
+}
+
+.hero-hit.activate {
+  animation: heroHit 0.3s forwards;
+}
+
+.enemy-hit.activate {
+  animation: enemyHit 0.3s forwards;
+}
+@keyframes enemyHit {
+  0% {
+    top: 0;
+    left: 0;
+    position: relative;
+  }
+  40% {
+    top: 15px;
+    left: 50px;
+    position: relative;
+  }
+  75% {
+    top: 5px;
+    left: 30px;
+    position: relative;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    position: relative;
+  }
+}
+
+@keyframes heroHit {
+  0% {
+    top: 0;
+    left: 0;
+    position: relative;
+  }
+  40% {
+    top: -15px;
+    left: -50px;
+    position: relative;
+  }
+  75% {
+    top: -5px;
+    left: -30px;
+    position: relative;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    position: relative;
+  }
 }

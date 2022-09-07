@@ -43,7 +43,11 @@ const ModalFight = ({ show, setModalFight }) => {
 
     setTimeout(() => {
       setHero({ ...hero, health: hero.health - _rxn });
-      setFight({ ...fight, turn: 0, round: fight.round + 1 });
+      setFight({
+        ...fight,
+        turn: 0,
+        round: fight.round + 1,
+      });
       setFightLog([...fightLog, _sta]);
     }, 1000);
   };
@@ -54,12 +58,12 @@ const ModalFight = ({ show, setModalFight }) => {
    * equipada
    */
   const hit = () => {
-    let _wep = hero.equipped.weapon;
-    let _dmg = random(_wep.min, _wep.max);
-    let _stq = 'O Herói atacou, provocando ' + _dmg + ' de dano.';
+    let equippedWeapon = hero.equipped.weapon;
+    let weaponDamage = random(equippedWeapon.min, equippedWeapon.max);
+    let _stq = 'O Herói atacou, provocando ' + weaponDamage + ' de dano.';
 
     setFightLog([...fightLog, _stq]);
-    setEnemy({ ...enemy, health: enemy.health - _dmg });
+    setEnemy({ ...enemy, health: enemy.health - weaponDamage });
     setFight({ ...fight, turn: 1 });
   };
 
@@ -68,12 +72,13 @@ const ModalFight = ({ show, setModalFight }) => {
    * @param {Object} data Magic Item
    */
   const handleUseMagic = data => {
-    let _mpp = random(data.min, data.max);
-    let _itx = 'O Herói usou ' + data.name + ' e causou ' + _mpp + ' de dano.';
+    let magicDamage = random(data.min, data.max);
+    let _itx =
+      'O Herói usou ' + data.name + ' e causou ' + magicDamage + ' de dano.';
 
     if (data.mana <= hero.mana) {
       setFightLog([...fightLog, _itx]);
-      setEnemy({ ...enemy, health: enemy.health - _mpp });
+      setEnemy({ ...enemy, health: enemy.health - magicDamage });
       setHero({ ...hero, mana: hero.mana - data.mana });
       setFight({ ...fight, turn: 1 });
       setModalUserMagic(false);
@@ -191,7 +196,7 @@ const ModalFight = ({ show, setModalFight }) => {
             <Turn fight={fight} />
 
             {/*  */}
-            <Fight hero={hero} enemy={enemy} />
+            <Fight hero={hero} enemy={enemy} fight={fight} />
 
             {/*  */}
             <Play

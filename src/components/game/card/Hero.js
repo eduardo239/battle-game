@@ -1,10 +1,10 @@
 import React from 'react';
 import { URL_IMG_GH } from '../../../utils/constants';
 
-const Card = ({ data, handleClick, type = 'none' }) => {
+const Card = ({ data, handleClick, hit, type = 'none' }) => {
   if (data)
     return (
-      <div className="card">
+      <div className={`card enemy-hit hero-hit ${hit ? 'activate' : ''}`}>
         {type === 'shop' && <span>{data.price}</span>}
         <div
           className={`card-image ${data.health <= 0 ? 'filter-grayscale' : ''}`}

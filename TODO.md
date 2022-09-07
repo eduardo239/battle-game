@@ -1,10 +1,10 @@
 x mostrar gold removido e exp removido ao fugir da batalha
+x centralizar o gift
+x ajustar toast
+x position top do botao de fechar o modal
 
-- centralizar o gift
 - poster da magia
-- ajustar toast
 - criar efeito de hit, cura, mana e veneno na batalha
-- position absoluto no canto superior do botão fechar do modal
 - adicionar mais dano ao utilizar o veneno
 - adicionar sistema de baú com código
 - alterar ordem do log da batalha
@@ -16,3 +16,5 @@ x mostrar gold removido e exp removido ao fugir da batalha
 - adicionar mais dano as armas ao evoluir
 - criar sistema que limita a fuga do herói da batalha
 - validar a quantidade de exp ao vencer uma luta
+- mostrar o dano da trap antes de fechar o modal
+- ajustar estilo do Toast

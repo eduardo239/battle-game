@@ -40,7 +40,7 @@ const Shop = ({ show, setModalShop }) => {
     <>
       <div className={`modal-container ${show ? 'active' : ''}`}>
         <div className={`modal ${show ? 'active' : ''}`}>
-          <div className="flex-justify-between">
+          <div className="modal-header">
             <h1>Loja</h1>
             <h3 className="color-warning ">
               Saldo do herói: ${(hero && hero.gold) || 0}
