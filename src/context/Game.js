@@ -7,23 +7,26 @@ import enemies_api from '../api/enemies.json';
 import magic_api from '../api/magic.json';
 import weapons_api from '../api/weapons.json';
 import traps_api from '../api/traps.json';
-import { ITEM, TRAP } from '../utils/constants';
+import chest_api from '../api/chest.json';
+
+import { CHEST, ITEM, TRAP } from '../utils/constants';
 
 const GameContext = React.createContext();
 const GameProvider = GameContext.Provider;
 
 const ContextGame = ({ children }) => {
-  const [heroes, setHeroes] = useState([]);
-  const [items, setItems] = useState([]);
   const [maps, setMaps] = useState([]);
-  const [enemies, setEnemies] = useState([]);
-  const [weapons, setWeapos] = useState([]);
   const [magic, setMagic] = useState([]);
   const [traps, setTraps] = useState([]);
+  const [items, setItems] = useState([]);
+  const [chests, setChests] = useState([]);
+  const [heroes, setHeroes] = useState([]);
+  const [weapons, setWeapos] = useState([]);
+  const [enemies, setEnemies] = useState([]);
 
   // dados das posicoes
-  const [enemy, setEnemy] = useState(null);
   const [item, setItem] = useState(null);
+  const [enemy, setEnemy] = useState(null);
 
   // log da luta
   const [fightLog, setFightLog] = useState([]);
@@ -34,6 +37,7 @@ const ContextGame = ({ children }) => {
   // gift item
   const [randomItem, setRandomItem] = useState(null);
   const [randomTrap, setRandomTrap] = useState(null);
+  const [randomChest, setRandomChest] = useState(null);
 
   // dice
   const [dice, setDice] = useState(0);
@@ -90,6 +94,9 @@ const ContextGame = ({ children }) => {
       case TRAP:
         setRandomTrap(traps[Math.floor(Math.random() * traps.length)]);
         break;
+      case CHEST:
+        setRandomChest(chests[Math.floor(Math.random() * chests.length)]);
+        break;
 
       default:
         break;
@@ -117,6 +124,8 @@ const ContextGame = ({ children }) => {
       if (magic.length === 0) setMagic(magic_api);
       // carregar as traps da api
       if (traps.length === 0) setTraps(traps_api);
+      // carregar os baus da api
+      if (chests.length === 0) setChests(chest_api);
     }
     return () => {
       mounted = false;
@@ -148,10 +157,11 @@ const ContextGame = ({ children }) => {
         resetGame,
         resetFight,
         randomItem,
-        getRandomItem,
+        randomChest,
         randomTrap,
         resetRandomItem,
         resetRandomTrap,
+        getRandomItem,
         setDice,
       }}
     >

@@ -8,7 +8,7 @@ import Play from './fight/Play';
 import Fight from './fight/Fight';
 import LevelUp from './fight/LevelUp';
 import ModalItems from './UserItems';
-import ModalMagic from './fight/ModalMagic';
+import ModalMagic from './fight/Magic';
 import Toast from '../../ui/Toast';
 import { messageHandler } from '../../../utils/game';
 import { ERROR } from '../../../utils/constants';

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Chest A",
+    "code": "123",
+    "poster": "chest/chest1.png"
+  },
+  {
+    "id": 2,
+    "name": "Chest B",
+    "code": "777",
+    "poster": "chest/chest1.png"
+  },
+  {
+    "id": 3,
+    "name": "Chest C",
+    "code": "000",
+    "poster": "chest/chest1.png"
+  }
+]

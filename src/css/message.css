@@ -1,0 +1,48 @@
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  width: 100%;
+  padding: 1rem;
+  display: none;
+  transform: translate3d(-100%, 100px, 0);
+  opacity: 0;
+}
+
+.message.message.success,
+.message.warning,
+.message.error {
+  background: var(--dark-alt);
+  border: 4px solid var(--dark);
+}
+
+.message.success {
+  color: var(--green);
+  outline: 4px solid var(--green);
+}
+
+.message.warning {
+  color: var(--warning);
+  outline: 4px solid var(--warning);
+}
+
+.message.error {
+  color: var(--error);
+  outline: 4px solid var(--error);
+}
+
+.message.success,
+.message.warning,
+.message.error {
+  animation: toast 0.3s forwards;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: block;
+}
+
+@keyframes toast {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 100px, 0);
+  }
+}

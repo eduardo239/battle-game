@@ -2,12 +2,12 @@ x mostrar gold removido e exp removido ao fugir da batalha
 x centralizar o gift
 x ajustar toast
 x position top do botao de fechar o modal
+x alterar ordem do log da batalha
 
+- adicionar sistema de baú com código
 - poster da magia
 - criar efeito de hit, cura, mana e veneno na batalha
 - adicionar mais dano ao utilizar o veneno
-- adicionar sistema de baú com código
-- alterar ordem do log da batalha
 - implementar sistema de salvamento local
 - criar batalha contra o chefe
 - layout responsivo

@@ -4,14 +4,21 @@ export const ITEM = 'item';
 export const TRAP = 'trap';
 export const BOSS = 'boss';
 export const INIT = 'init';
+export const CODE = 'code';
+export const CHEST = 'chest';
 
 export const BOMB = 'bomb';
 
 export const LEVEL_BASE = [NULL, ENEMY, TRAP, ITEM];
-export const LEVEL_EASY = [ENEMY, ENEMY].concat(LEVEL_BASE);
+export const LEVEL_EASYXXX = [NULL, ENEMY, ENEMY, ITEM, TRAP].concat(
+  LEVEL_BASE
+);
 export const LEVEL_MEDIUM = [NULL, ENEMY, ENEMY, ENEMY, ITEM].concat(
   LEVEL_BASE
 );
+// TEST
+export const LEVEL_EASY = [CODE, CHEST];
+
 export const LEVEL_HARD = 'hard';
 
 export const MANA = 'mana';

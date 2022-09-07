@@ -9,6 +9,7 @@ import './css/modal.css';
 import './css/game.css';
 import './css/map.css';
 import './css/hero.css';
+import './css/message.css';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ContextHero } from './context/Hero';

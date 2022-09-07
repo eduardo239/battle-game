@@ -8,10 +8,12 @@ import GameMenu from '../components/game/GameMenu';
 import Timeline from '../components/game/position/Timeline';
 import ModalShop from '../components/game/modal/Shop';
 import ModalTrap from '../components/game/modal/Trap';
-import ModalFight from '../components/game/modal/ModalFight';
-import ModalGiftItem from '../components/game/modal/ModalItem';
+import ModalFight from '../components/game/modal/Fight';
+import ModalGiftItem from '../components/game/modal/Gift';
 import ModalUserItems from '../components/game/modal/UserItems';
-import { BOSS, ENEMY, ITEM, NULL, TRAP } from '../utils/constants';
+import ModalCode from '../components/game/modal/Code';
+import ModalChest from '../components/game/modal/Chest';
+import { BOSS, CHEST, CODE, ENEMY, ITEM, NULL, TRAP } from '../utils/constants';
 
 const Game = () => {
   const navigate = useNavigate();
@@ -28,6 +30,8 @@ const Game = () => {
   const [modalItem, setModalItem] = useState(false);
   const [modalGiftItem, setModalGiftItem] = useState(false);
   const [modalTrap, setModalTrap] = useState(false);
+  const [modalCode, setModalCode] = useState(false);
+  const [modalChest, setModalChest] = useState(false);
 
   // validar se os dados estao sendo atualizados
   const [updatedDice, setUpdatedDice] = useState(false);
@@ -96,6 +100,12 @@ const Game = () => {
             break;
           case BOSS:
             break;
+          case CODE:
+            setModalCode(true);
+            break;
+          case CHEST:
+            setModalChest(true);
+            break;
           case NULL:
             break;
           default:
@@ -121,6 +131,10 @@ const Game = () => {
       <ModalGiftItem show={modalGiftItem} setModalGiftItem={setModalGiftItem} />
       {/* game modal trap */}
       <ModalTrap show={modalTrap} setModalTrap={setModalTrap} />
+      {/* game modal code */}
+      <ModalCode show={modalCode} setModalCode={setModalCode} />
+      {/* game code para o chest */}
+      <ModalChest show={modalChest} setModalChest={setModalChest} />
       {/* game menu */}
       <GameMenu
         game={game}

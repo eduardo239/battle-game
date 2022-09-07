@@ -56,48 +56,6 @@
   gap: 1px;
 }
 
-.message {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 300;
-  width: 100%;
-  padding: 1rem;
-  display: none;
-  transform: translateY(-60px);
-  opacity: 0;
-}
-
-.message.success {
-  color: var(--dark);
-  background: var(--light);
-}
-
-.message.warning {
-  color: var(--dark);
-  background: var(--light);
-}
-
-.message.error {
-  color: var(--dark);
-  background: var(--light);
-}
-
-.message.success,
-.message.warning,
-.message.error {
-  animation: toast 0.2s forwards;
-  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-  display: block;
-}
-
-@keyframes toast {
-  to {
-    opacity: 1;
-    transform: translateY(100px);
-  }
-}
-
 .level-up {
   position: fixed;
   top: 0;
