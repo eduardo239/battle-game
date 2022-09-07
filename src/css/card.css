@@ -59,3 +59,12 @@
   font-weight: 700;
   box-shadow: var(--shadow);
 }
+
+.card-password {
+  padding: 10px;
+  width: 100px;
+  outline: none;
+  font-family: var(--sans);
+  border: 2px solid var(--error);
+  margin-bottom: 2px;
+}

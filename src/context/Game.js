@@ -130,7 +130,7 @@ const ContextGame = ({ children }) => {
     return () => {
       mounted = false;
     };
-  }, [heroes, items, maps, enemies, weapons, magic]);
+  }, [heroes, items, maps, enemies, weapons, magic, traps, chests]);
 
   return (
     <GameProvider

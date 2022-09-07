@@ -60,9 +60,11 @@ const ModalItem = ({ show, setModalGiftItem }) => {
           </div>
         </div>
 
-        {message && message.content && (
-          <Toast type={message.type} message={message.content} />
-        )}
+        <Toast
+          show={message && message.content}
+          type={message.type}
+          message={message.content}
+        />
       </>
     );
 };

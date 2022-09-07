@@ -10,14 +10,12 @@ export const CHEST = 'chest';
 export const BOMB = 'bomb';
 
 export const LEVEL_BASE = [NULL, ENEMY, TRAP, ITEM];
-export const LEVEL_EASYXXX = [NULL, ENEMY, ENEMY, ITEM, TRAP].concat(
-  LEVEL_BASE
-);
+export const LEVEL_EASY = [NULL, ENEMY, ENEMY, ITEM, TRAP].concat(LEVEL_BASE);
 export const LEVEL_MEDIUM = [NULL, ENEMY, ENEMY, ENEMY, ITEM].concat(
   LEVEL_BASE
 );
 // TEST
-export const LEVEL_EASY = [CODE, CHEST];
+// export const LEVEL_EASY = [CODE, CHEST];
 
 export const LEVEL_HARD = 'hard';
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Toast from '../../ui/Toast';
+import React from 'react';
+
 import CardCode from '../card/Code';
 
 let data = {
@@ -8,11 +8,6 @@ let data = {
 };
 
 const Code = ({ show, setModalCode }) => {
-  const [message, setMessage] = useState({
-    type: '',
-    content: '',
-  });
-
   const handleGet = data => {
     console.log(data);
   };
@@ -36,10 +31,6 @@ const Code = ({ show, setModalCode }) => {
           </div>
         </div>
       </div>
-
-      {message && message.content && (
-        <Toast type={message.type} message={message.content} />
-      )}
     </>
   );
 };

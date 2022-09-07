@@ -1,4 +1,14 @@
-import { BOSS, ENEMY, ITEM, LEVEL_EASY, NULL, TRAP, INIT } from './constants';
+import {
+  BOSS,
+  ENEMY,
+  ITEM,
+  LEVEL_EASY,
+  NULL,
+  TRAP,
+  INIT,
+  CODE,
+  CHEST,
+} from './constants';
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -38,6 +48,26 @@ export const generatePositions = (map, enemies, items) => {
 
   positions[0] = { init: { name: INIT }, id: uuidv4() };
   positions[positions.length - 1] = { boss: { name: BOSS }, id: uuidv4() };
+
+  // adicionar bau a uma posicao aleatoria
+  let pos1 = Math.floor(Math.random() * positions.length);
+  let pos2 = Math.floor(Math.random() * positions.length);
+
+  if (pos1 === 0) pos1 += 1;
+  if (pos2 === 0) pos2 += 2;
+  if (pos1 === pos2) pos2 += 1;
+  // TODO: validar bugs
+  if (pos1 === positions.length - 1) pos1 -= 1;
+  if (pos2 === positions.length - 1) pos2 -= 1;
+
+  if (pos1 > pos2) {
+    let x = pos1;
+    pos1 = pos2;
+    pos2 = x;
+  }
+
+  positions[pos1] = { code: { name: CODE }, id: uuidv4() };
+  positions[pos2] = { chest: { name: CHEST }, id: uuidv4() };
 
   return positions;
 };

@@ -20,7 +20,15 @@
     "name": "Vulcano",
     "level": 3,
     "type": "fire",
-    "size": 175,
+    "size": 275,
+    "poster": "maps/map3.png"
+  },
+  {
+    "id": 4,
+    "name": "Sombrio",
+    "level": 3,
+    "type": "dark",
+    "size": 4275,
     "poster": "maps/map3.png"
   }
 ]

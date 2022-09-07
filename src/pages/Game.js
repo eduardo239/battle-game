@@ -42,19 +42,6 @@ const Game = () => {
     setTimeout(() => navigate('/'), 5);
   };
 
-  useEffect(() => {
-    let mounted = true;
-    // movimenta para proxima posicao apos animacao dos dados
-    if (updatedDice && mounted) {
-      playUpdateStats();
-    }
-
-    return () => {
-      mounted = false;
-      setUpdatedDice(false);
-    };
-  }, [updatedDice]);
-
   const play = () => {
     if (game.mapLength === 0) {
       return;
@@ -114,6 +101,19 @@ const Game = () => {
       }
     }, 1000);
   };
+
+  useEffect(() => {
+    let mounted = true;
+    // movimenta para proxima posicao apos animacao dos dados
+    if (updatedDice && mounted) {
+      playUpdateStats();
+    }
+
+    return () => {
+      mounted = false;
+      setUpdatedDice(false);
+    };
+  }, [updatedDice]);
 
   return (
     <div className="game-container">
