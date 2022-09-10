@@ -43,14 +43,16 @@ const SelectMap = () => {
         {/* loop pelos herois da api */}
         <div className="card-grid">
           {maps.length > 0 ? (
-            maps.map(data => (
-              <CardMap
-                key={Math.random()}
-                data={data}
-                handleClick={() => handleSelectThis(data)}
-                type="select"
-              />
-            ))
+            maps
+              .map(data => (
+                <CardMap
+                  key={Math.random()}
+                  data={data}
+                  handleClick={() => handleSelectThis(data)}
+                  type="select"
+                />
+              ))
+              .splice(1, 3)
           ) : (
             <span>Nada encontrado aqui</span>
           )}

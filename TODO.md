@@ -3,6 +3,7 @@ x centralizar o gift
 x ajustar toast
 x position top do botao de fechar o modal
 x alterar ordem do log da batalha
+x ajustar estilo do Toast
 
 - adicionar sistema de baú com código
 - poster da magia
@@ -18,4 +19,3 @@ x alterar ordem do log da batalha
 - criar sistema que limita a fuga do herói da batalha
 - validar a quantidade de exp ao vencer uma luta
 - mostrar o dano da trap antes de fechar o modal
-- ajustar estilo do Toast

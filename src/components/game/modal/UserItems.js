@@ -1,8 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { HeroContext } from '../../../context/Hero';
-import { MANA, HEALTH, POISON, SUCCESS } from '../../../utils/constants';
+import {
+  MANA,
+  HEALTH,
+  POISON,
+  SUCCESS,
+  WEAPON,
+} from '../../../utils/constants';
 import Toast from '../../ui/Toast';
-import Card from '../card/Item';
+import CardItem from '../card/Item';
+import CardWeapon from '../card/Weapon';
 
 const UserItems = ({ show, setModalItem }) => {
   const { hero, setHero } = useContext(HeroContext);
@@ -15,30 +22,30 @@ const UserItems = ({ show, setModalItem }) => {
   const handleUse = data => {
     // remove item da lista ao utilizar
     let arrItems = hero.items.filter(i => i.id !== data.id);
-    let _itx = '';
+    let text = '';
 
     switch (data.type) {
       case MANA:
         // TODO: validar mana maxima
         setHero({ ...hero, items: arrItems, mana: hero.mana + data.value });
-        _itx =
+        text =
           'O Herói usou ' +
           data.name +
           ' e aumentou ' +
           data.value +
           ' de mana.';
-        setMessage({ type: SUCCESS, content: _itx });
+        setMessage({ type: SUCCESS, content: text });
         break;
       case HEALTH:
         // TODO: validar vida maxima
         setHero({ ...hero, items: arrItems, health: hero.health + data.value });
-        _itx =
+        text =
           'O Herói usou ' +
           data.name +
           ' e curou ' +
           data.value +
           ' de sua vida.';
-        setMessage({ type: SUCCESS, content: _itx });
+        setMessage({ type: SUCCESS, content: text });
         break;
       case POISON:
         // TODO: validar vida maxima
@@ -48,7 +55,7 @@ const UserItems = ({ show, setModalItem }) => {
           items: arrItems,
           equipped: { ...hero.equipped, poison: true },
         });
-        _itx =
+        text =
           'O Herói usou ' +
           data.name +
           ' e envenenou ' +
@@ -56,7 +63,21 @@ const UserItems = ({ show, setModalItem }) => {
           ' o inimigo.';
         setMessage({
           type: SUCCESS,
-          content: _itx,
+          content: text,
+        });
+        break;
+      case WEAPON:
+        // TODO: validar vida maxima
+        // Aplicar condicao de envenenado ao inimigo
+        console.log(data);
+        setHero({
+          ...hero,
+          equipped: { ...hero.equipped, weapon: data },
+        });
+        text = 'O Herói equipou ' + data.name + '.';
+        setMessage({
+          type: SUCCESS,
+          content: text,
         });
         break;
       default:
@@ -80,16 +101,37 @@ const UserItems = ({ show, setModalItem }) => {
 
           <div className="grid-container">
             {hero && hero.items.length > 0 ? (
-              hero.items.map(item => (
-                <Card
-                  key={Math.random()}
-                  data={item}
-                  handleClick={() => handleUse(item)}
-                  type="use"
-                />
-              ))
+              hero.items.map(
+                item =>
+                  item.type == HEALTH && (
+                    <CardItem
+                      key={item.id}
+                      data={item}
+                      handleClick={() => handleUse(item)}
+                      type="use"
+                    />
+                  )
+              )
             ) : (
-              <span>Nada encontrado aqui</span>
+              <p>Nada encontrado aqui.</p>
+            )}
+          </div>
+
+          <div className="grid-container">
+            {hero && hero.items.length > 0 ? (
+              hero.items.map(
+                item =>
+                  item.type === WEAPON && (
+                    <CardWeapon
+                      key={item.id}
+                      data={item}
+                      handleClick={() => handleUse(item)}
+                      type="equip"
+                    />
+                  )
+              )
+            ) : (
+              <p>Nada encontrado aqui.</p>
             )}
           </div>
         </div>

@@ -25,9 +25,9 @@ const Card = ({ data, handleClick, type = 'none' }) => {
           use
         </button>
       )}
-      {type === 'select' && (
+      {type === 'equip' && (
         <button className="width100" onClick={handleClick}>
-          selecionar
+          equipar
         </button>
       )}
     </div>

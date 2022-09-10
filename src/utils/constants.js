@@ -6,6 +6,7 @@ export const BOSS = 'boss';
 export const INIT = 'init';
 export const CODE = 'code';
 export const CHEST = 'chest';
+export const WEAPON = 'weapon';
 
 export const BOMB = 'bomb';
 

@@ -90,6 +90,7 @@ const ModalFight = ({ show, setModalFight }) => {
    * e de experiência se houver experiência
    */
   const flee = () => {
+    // TODO: desativar botaos ao sair
     if (fight.end) {
       // sair sem prejuizo
       setModalFight(false);
