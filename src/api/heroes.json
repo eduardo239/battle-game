@@ -2,8 +2,8 @@
   {
     "id": 1,
     "name": "Wilson Linson",
-    "health": 100,
-    "mana": 100,
+    "health": 200,
+    "mana": 50,
     "type": "fire",
     "gender": "m",
     "exp": 0,
@@ -13,7 +13,7 @@
     "items": [],
     "weapons": [],
     "magic": [],
-    "gold": 40,
+    "gold": 10,
     "victories": 0,
     "equipped": {
       "weapon": null,
@@ -53,7 +53,7 @@
     "id": 3,
     "name": "Joana Light",
     "health": 100,
-    "mana": 100,
+    "mana": 300,
     "type": "wind",
     "gender": "f",
     "exp": 0,
@@ -63,7 +63,7 @@
     "items": [],
     "weapons": [],
     "magic": [],
-    "gold": 0,
+    "gold": 20,
     "victories": 0,
     "equipped": {
       "weapon": null,

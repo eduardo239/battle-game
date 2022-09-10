@@ -18,6 +18,7 @@ const Card = ({ data, handleClick, hit, type = 'none' }) => {
             HP: {data.health}
           </span>
           {data.mana && <span>MP: {data.mana}</span>}
+          <span>GO: ${data.gold || 0}</span>
         </div>
         {type === 'shop' && (
           <button className="width100" onClick={handleClick}>
