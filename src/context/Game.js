@@ -16,7 +16,7 @@ const GameProvider = GameContext.Provider;
 
 const ContextGame = ({ children }) => {
   const [maps, setMaps] = useState([]);
-  const [magic, setMagic] = useState([]);
+  const [magics, setMagics] = useState([]);
   const [traps, setTraps] = useState([]);
   const [items, setItems] = useState([]);
   const [chests, setChests] = useState([]);
@@ -121,7 +121,7 @@ const ContextGame = ({ children }) => {
       // carregar as armas da api
       if (weapons.length === 0) setWeapos(weapons_api);
       // carregar as magicas da api
-      if (magic.length === 0) setMagic(magic_api);
+      if (magics.length === 0) setMagics(magic_api);
       // carregar as traps da api
       if (traps.length === 0) setTraps(traps_api);
       // carregar os baus da api
@@ -130,7 +130,7 @@ const ContextGame = ({ children }) => {
     return () => {
       mounted = false;
     };
-  }, [heroes, items, maps, enemies, weapons, magic, traps, chests]);
+  }, [heroes, items, maps, enemies, weapons, magics, traps, chests]);
 
   return (
     <GameProvider
@@ -141,7 +141,7 @@ const ContextGame = ({ children }) => {
         enemies,
         map,
         weapons,
-        magic,
+        magics,
         game,
         enemy,
         item,

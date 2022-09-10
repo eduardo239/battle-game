@@ -8,7 +8,7 @@
     "mana": 40,
     "min": 45,
     "max": 80,
-    "poster": "items/potion1.png"
+    "poster": "magic/magic2.png"
   },
   {
     "id": 2,
@@ -19,17 +19,28 @@
     "mana": 80,
     "min": 90,
     "max": 125,
-    "poster": "items/potion1.png"
+    "poster": "magic/magic3.png"
   },
   {
     "id": 3,
-    "name": "Bola de fogo (BG)",
-    "description": "Dano grande de fogo",
-    "rarity": "super rare",
-    "type": "fire",
-    "mana": 120,
-    "min": 180,
-    "max": 399,
-    "poster": "items/mana1.png"
+    "name": "Bola de gelo (BG)",
+    "description": "Dano grande de gelo",
+    "rarity": "normal",
+    "type": "ice",
+    "mana": 35,
+    "min": 45,
+    "max": 60,
+    "poster": "magic/magic5.png"
+  },
+  {
+    "id": 6,
+    "name": "Bola de gelo (BG)",
+    "description": "Dano grande de gelo",
+    "rarity": "rare",
+    "type": "ice",
+    "mana": 60,
+    "min": 70,
+    "max": 80,
+    "poster": "magic/magic4.png"
   }
 ]

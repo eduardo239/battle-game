@@ -10,7 +10,7 @@ import { SUCCESS, WARNING } from '../../../utils/constants';
 import { isObjectEmpty } from '../../../utils';
 
 const Shop = ({ show, setModalShop }) => {
-  const { items, weapons } = useContext(GameContext);
+  const { items, weapons, magics } = useContext(GameContext);
   const { hero, setHero } = useContext(HeroContext);
 
   const [message, setMessage] = useState({
@@ -73,6 +73,23 @@ const Shop = ({ show, setModalShop }) => {
                   key={weapon.id}
                   data={weapon}
                   handleClick={() => handleBuy(weapon)}
+                  type="shop"
+                />
+              ))
+            ) : (
+              <span>Nada encontrado aqui</span>
+            )}
+          </div>
+
+          {/* magicas */}
+          <h3>Mágicas</h3>
+          <div className="card-container">
+            {magics.length > 0 ? (
+              magics.map(magic => (
+                <CardWeapon
+                  key={magic.id}
+                  data={magic}
+                  handleClick={() => handleBuy(magic)}
                   type="shop"
                 />
               ))

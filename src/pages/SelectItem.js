@@ -7,7 +7,7 @@ import CardItem from '../components/game/card/Item';
 import { URL_UNK } from '../utils/constants';
 
 const SelectItem = () => {
-  const { items, magic, weapons } = useContext(GameContext);
+  const { items, magics, weapons } = useContext(GameContext);
   const { hero, setHero } = useContext(HeroContext);
 
   const handleSelectThis = data => {
@@ -15,7 +15,7 @@ const SelectItem = () => {
     setHero({
       ...hero,
       items: [data],
-      magic: [magic[0]],
+      magic: [magics[0]],
       weapons: [weapons[0]],
       equipped: {
         weapon: weapons[0],
