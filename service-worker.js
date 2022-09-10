@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/card-game/precache-manifest.9c144be4141016d40ed95c7640e5c652.js"
+  "/card-game/precache-manifest.87adda09169a420e1fd1fac241bf3c3d.js"
 );
 
 workbox.clientsClaim();
