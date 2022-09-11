@@ -4,12 +4,13 @@ import { isObjectEmpty } from '../../../utils';
 import { messageHandler } from '../../../utils/game';
 import { CHEST, ERROR, SUCCESS } from '../../../utils/constants';
 import Toast from '../../ui/Toast';
-import CardItem from '../card/Chest';
+import CardChest from '../card/Chest';
 
 const Chest = ({ show, setModalChest }) => {
   const { randomChest, getRandomItem } = useContext(GameContext);
 
   const [password, setPassword] = useState('');
+  const [attempt, setAttempt] = useState(false);
 
   const [message, setMessage] = useState({
     type: '',
@@ -17,14 +18,12 @@ const Chest = ({ show, setModalChest }) => {
   });
 
   const handleGet = data => {
-    console.log(data);
-
-    let code = data.code;
-    if (code === password) {
+    if (data.code === password) {
       messageHandler(SUCCESS, 'Bau aberto com sucesso!', setMessage);
     } else {
       messageHandler(ERROR, 'Falha ao abrir o bau!', setMessage);
     }
+    setAttempt(true);
   };
 
   useEffect(() => {
@@ -47,7 +46,8 @@ const Chest = ({ show, setModalChest }) => {
             </div>
 
             <div className="flex-justify-center">
-              <CardItem
+              <CardChest
+                attempt={attempt}
                 key={Math.random()}
                 data={randomChest}
                 handleClick={() => handleGet(randomChest)}

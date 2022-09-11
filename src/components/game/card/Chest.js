@@ -1,7 +1,14 @@
 import React from 'react';
 import { URL_IMG_GH } from '../../../utils/constants';
 
-const Card = ({ data, handleClick, setPassword, password, type = 'none' }) => {
+const Card = ({
+  data,
+  handleClick,
+  setPassword,
+  password,
+  attempt,
+  type = 'none',
+}) => {
   return (
     <div className="card">
       {type === 'shop' && <span className="price">${data.price}</span>}
@@ -10,13 +17,10 @@ const Card = ({ data, handleClick, setPassword, password, type = 'none' }) => {
       </div>
       <div className="card-content">
         <span>NA: {data.name}</span>
-        <span>TY: {data.type}</span>
-        <span>RA: {data.rarity}</span>
-        <span>VL: {data.value}</span>
       </div>
 
       {type === 'key' && (
-        <form>
+        <>
           <input
             autoFocus="autoFocus"
             className="card-password"
@@ -24,10 +28,10 @@ const Card = ({ data, handleClick, setPassword, password, type = 'none' }) => {
             onChange={e => setPassword(e.target.value)}
             value={password}
           />
-          <button className="width100" onClick={handleClick}>
+          <button disabled={attempt} className="width100" onClick={handleClick}>
             abrir
           </button>
-        </form>
+        </>
       )}
     </div>
   );

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GameContext } from '../../../context/Game';
+import { isObjectEmpty } from '../../../utils';
 
 import CardCode from '../card/Code';
 
@@ -8,31 +10,34 @@ let data = {
 };
 
 const Code = ({ show, setModalCode }) => {
+  const { randomChest } = useContext(GameContext);
+
   const handleGet = data => {
     console.log(data);
   };
 
-  return (
-    <>
-      <div className={`modal-container ${show ? 'active' : ''}`}>
-        <div className={`modal ${show ? 'active' : ''}`}>
-          <div className="modal-header">
-            <h2>Presente</h2>
-            <button onClick={() => setModalCode(false)}>fechar</button>{' '}
-          </div>
+  if (!isObjectEmpty(randomChest))
+    return (
+      <>
+        <div className={`modal-container ${show ? 'active' : ''}`}>
+          <div className={`modal ${show ? 'active' : ''}`}>
+            <div className="modal-header">
+              <h2>História</h2>
+              <button onClick={() => setModalCode(false)}>fechar</button>{' '}
+            </div>
 
-          <div className="flex-justify-center">
-            <CardCode
-              key={Math.random()}
-              data={data}
-              handleClick={() => handleGet(data)}
-              type="select"
-            />
+            <div className="flex-justify-center">
+              <CardCode
+                key={randomChest.id}
+                data={randomChest}
+                handleClick={() => handleGet(randomChest)}
+                type="select"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
 };
 
 export default Code;
