@@ -11,7 +11,7 @@ const ModalMagic = ({
     <div className={`modal-container ${modalUserMagic ? 'active' : ''}`}>
       <div className={`modal ${modalUserMagic ? 'active' : ''}`}>
         <div className="modal-header">
-          <h1>Magias</h1>
+          <h2>Magias</h2>
           <h3 className="color-warning ">
             Mana disponível: {(hero && hero.mana) || 0}
           </h3>

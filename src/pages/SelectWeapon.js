@@ -1,27 +1,27 @@
 import React, { useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import CardItem from '../components/game/card/Item';
 import { Link } from 'react-router-dom';
 import { URL_UNK } from '../utils/constants';
 import { GameContext } from '../context/Game';
 import { HeroContext } from '../context/Hero';
+import { isObjectEmpty } from '../utils';
+import CardWeapon from '../components/game/card/Weapon';
 
-const SelectItem = () => {
-  const { items, magics, weapons } = useContext(GameContext);
+const SelectWeapon = () => {
+  const { weapons } = useContext(GameContext);
   const { hero, setHero } = useContext(HeroContext);
 
   const handleSelectThis = data => {
     // adicionar o item aos items do heroi
     setHero({
       ...hero,
-      items: [data],
-      magic: [magics[0]],
+      weapons: [data],
       equipped: {
-        weapon: weapons[0],
+        weapon: data,
       },
     });
 
-    // TODO: adicionar a magica ao heroi
+    // TODO: adicionar a magica e a arma ao heroi
   };
 
   const handleSelect = data => {
@@ -34,14 +34,14 @@ const SelectItem = () => {
       <div>
         {/* loop pelos herois da api */}
         <div className="card-grid">
-          {items.length > 0 ? (
-            items
-              .map(item => (
-                <CardItem
-                  key={Math.random()}
-                  data={item}
-                  handleClick={() => handleSelect(item)}
-                  type="select"
+          {weapons.length > 0 ? (
+            weapons
+              .map(weapon => (
+                <CardWeapon
+                  key={weapon.id}
+                  data={weapon}
+                  handleClick={() => handleSelect(weapon)}
+                  type="shop"
                 />
               ))
               .splice(0, 3)
@@ -52,14 +52,14 @@ const SelectItem = () => {
 
         {/* menu */}
         <div className="menu-select">
-          <Link to="/select-hero">
+          <Link to="/select-item">
             <button>
               voltar{' '}
               <span className="material-symbols-outlined">navigate_before</span>
             </button>
           </Link>
-          <Link to="/select-weapon">
-            <button disabled={!hero || hero.items.length === 0}>
+          <Link to="/select-map">
+            <button disabled={isObjectEmpty(hero && hero.equipped.weapon)}>
               próximo{' '}
               <span className="material-symbols-outlined">navigate_next</span>
             </button>
@@ -68,12 +68,13 @@ const SelectItem = () => {
 
         {/* mostrar o heroi selecionado */}
         <div className="card-grid">
-          {hero && hero.items && hero.items.length > 0 ? (
-            hero.items.map(item => (
-              <CardItem key={Math.random()} data={item}></CardItem>
-            ))
+          {hero && !isObjectEmpty(hero.equipped.weapon) ? (
+            <CardWeapon
+              key={hero.equipped.weapon.id}
+              data={hero.equipped.weapon}
+            />
           ) : (
-            <CardItem data={{ name: 'Nada selecionado', poster: URL_UNK }} />
+            <CardWeapon data={{ name: 'Nada selecionado', poster: URL_UNK }} />
           )}
         </div>
       </div>
@@ -81,4 +82,4 @@ const SelectItem = () => {
   );
 };
 
-export default SelectItem;
+export default SelectWeapon;

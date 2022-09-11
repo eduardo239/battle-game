@@ -42,7 +42,7 @@ const Chest = ({ show, setModalChest }) => {
         <div className={`modal-container ${show ? 'active' : ''}`}>
           <div className={`modal ${show ? 'active' : ''}`}>
             <div className="modal-header">
-              <h1>Baú</h1>
+              <h2>Baú</h2>
               <button onClick={() => setModalChest(false)}>fechar</button>{' '}
             </div>
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import { URL_IMG_GH } from '../../../utils/constants';
 
-const Card = ({ data, handleClick, type = 'none' }) => {
+const Card = ({ data, handleClick, equipped, type = 'none' }) => {
   return (
     <div className="card">
-      {type === 'shop' && <span className="price">${data.price}</span>}
+      {type === 'equip' && equipped && (
+        <span className={`${equipped ? 'equipped' : ''}`}>Equipado</span>
+      )}
       <div className="card-image">
         <img src={URL_IMG_GH + data.poster} alt={data.name} />
       </div>

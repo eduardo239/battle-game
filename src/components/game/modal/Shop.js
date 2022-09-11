@@ -6,7 +6,7 @@ import { messageHandler } from '../../../utils/game';
 import CardItem from '../card/Item';
 import CardWeapon from '../card/Weapon';
 import Toast from '../../ui/Toast';
-import { SUCCESS, WARNING } from '../../../utils/constants';
+import { ITEM, SUCCESS, WARNING, WEAPON } from '../../../utils/constants';
 import { isObjectEmpty } from '../../../utils';
 
 const Shop = ({ show, setModalShop }) => {
@@ -23,11 +23,24 @@ const Shop = ({ show, setModalShop }) => {
       if (hero.gold >= data.price) {
         // compra de item e adiciona a lista do heroi
         let newGold = hero.gold - data.price;
-        let i = { ...data, id: uuidv4() };
-        let newItems = [...hero.items, i];
+        let newData = { ...data, id: uuidv4() };
+        switch (data.type) {
+          case ITEM:
+            let newItems = [...hero.items, newData];
+            setHero({ ...hero, items: newItems, gold: newGold });
+            messageHandler(SUCCESS, 'Item comprado com sucesso!', setMessage);
 
-        setHero({ ...hero, items: newItems, gold: newGold });
-        messageHandler(SUCCESS, 'Item comprado com sucesso!', setMessage);
+            break;
+          case WEAPON:
+            let newIWeapons = [...hero.weapons, newData];
+            setHero({ ...hero, weapons: newIWeapons, gold: newGold });
+            messageHandler(SUCCESS, 'Arma comprada com sucesso!', setMessage);
+
+            break;
+
+          default:
+            break;
+        }
       } else {
         messageHandler(WARNING, 'Sem ouro suficiente para compra!', setMessage);
       }
@@ -41,10 +54,10 @@ const Shop = ({ show, setModalShop }) => {
       <div className={`modal-container ${show ? 'active' : ''}`}>
         <div className={`modal ${show ? 'active' : ''}`}>
           <div className="modal-header">
-            <h1>Loja</h1>
-            <h3 className="color-warning ">
+            <h2>Loja</h2>
+            <p className="color-dark">
               Saldo do herói: ${(hero && hero.gold) || 0}
-            </h3>
+            </p>
             <button onClick={() => setModalShop(false)}>fechar</button>
           </div>
 

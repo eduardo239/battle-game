@@ -176,7 +176,8 @@ button:disabled:hover {
 
 .grid-container {
   display: flex;
-  gap: 0.25rem;
+  margin: 1rem 0;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
@@ -186,6 +187,10 @@ button:disabled:hover {
 
 .color-warning {
   color: var(--warning);
+}
+
+.color-dark {
+  color: var(--dark);
 }
 
 .filter-grayscale {

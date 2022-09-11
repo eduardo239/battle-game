@@ -17,7 +17,7 @@ const Code = ({ show, setModalCode }) => {
       <div className={`modal-container ${show ? 'active' : ''}`}>
         <div className={`modal ${show ? 'active' : ''}`}>
           <div className="modal-header">
-            <h1>Presente</h1>
+            <h2>Presente</h2>
             <button onClick={() => setModalCode(false)}>fechar</button>{' '}
           </div>
 

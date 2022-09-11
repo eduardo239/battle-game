@@ -95,15 +95,16 @@ const UserItems = ({ show, setModalItem }) => {
       <div className={`modal-container ${show ? 'active' : ''}`}>
         <div className={`modal ${show ? 'active' : ''}`}>
           <div className="modal-header">
-            <h1>Inventário</h1>
+            <h2>Inventário</h2>
             <button onClick={() => setModalItem(false)}>fechar</button>
           </div>
 
+          <p className="color-error">- Itens</p>
           <div className="grid-container">
             {hero && hero.items.length > 0 ? (
               hero.items.map(
                 item =>
-                  item.type == HEALTH && (
+                  item.type === HEALTH && (
                     <CardItem
                       key={item.id}
                       data={item}
@@ -113,16 +114,20 @@ const UserItems = ({ show, setModalItem }) => {
                   )
               )
             ) : (
-              <p>Nada encontrado aqui.</p>
+              <p>
+                <small>O herói não possui itens.</small>
+              </p>
             )}
           </div>
 
+          <p className="color-error">- Armas</p>
           <div className="grid-container">
-            {hero && hero.items.length > 0 ? (
-              hero.items.map(
+            {hero && hero.weapons.length > 0 ? (
+              hero.weapons.map(
                 item =>
                   item.type === WEAPON && (
                     <CardWeapon
+                      equipped={item.id === hero.equipped.weapon.id}
                       key={item.id}
                       data={item}
                       handleClick={() => handleUse(item)}
@@ -131,7 +136,9 @@ const UserItems = ({ show, setModalItem }) => {
                   )
               )
             ) : (
-              <p>Nada encontrado aqui.</p>
+              <p>
+                <small>O herói não possui nenhuma arma.</small>
+              </p>
             )}
           </div>
         </div>

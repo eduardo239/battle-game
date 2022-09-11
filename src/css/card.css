@@ -20,7 +20,9 @@
   border: 1px solid var(--warning);
   padding: 10px;
 }
-
+.card.equipped {
+  outline: 5px solid var(--error);
+}
 .card-image img {
   width: 100px;
   height: 100px;
@@ -46,7 +48,8 @@
   width: 100%;
 }
 
-.price {
+.price,
+.equipped {
   position: absolute;
   top: -12px;
   left: -6px;

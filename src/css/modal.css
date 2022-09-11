@@ -86,9 +86,16 @@
   position: sticky;
   left: 0;
   top: 0;
-  background: var(--dark);
+  background: var(--light);
+  color: var(--dark);
   z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.modal-header h2,
+.modal-header p {
+  margin: 0;
 }

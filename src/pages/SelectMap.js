@@ -60,7 +60,7 @@ const SelectMap = () => {
 
         {/* menu */}
         <div className="menu-select">
-          <Link to="/select-item">
+          <Link to="/select-weapon">
             <button>
               voltar{' '}
               <span className="material-symbols-outlined">navigate_before</span>{' '}

@@ -43,7 +43,7 @@ const ModalItem = ({ show, setModalGiftItem }) => {
         <div className={`modal-container ${show ? 'active' : ''}`}>
           <div className={`modal ${show ? 'active' : ''}`}>
             <div className="modal-header">
-              <h1>Presente</h1>
+              <h2>Presente</h2>
               <button onClick={() => setModalGiftItem(false)}>
                 fechar
               </button>{' '}
