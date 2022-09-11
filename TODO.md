@@ -5,11 +5,9 @@ x position top do botao de fechar o modal
 x alterar ordem do log da batalha
 x ajustar estilo do Toast
 x jogador pode selecionar arma e equipar
-
 x adicionar sistema de baú com código
+x poster da magia
 
-- poster da magia
-<!-- <a href="https://www.freepik.com/free-vector/magic-spheres-shiny-energy-balls_26796745.htm#query=game%20magic&position=33&from_view=keyword">Image by upklyak</a> on Freepik -->
 - criar efeito de hit, cura, mana e veneno na batalha
 - adicionar mais dano ao utilizar o veneno
 - implementar sistema de salvamento local
@@ -21,3 +19,5 @@ x adicionar sistema de baú com código
 - criar sistema que limita a fuga do herói da batalha
 - validar a quantidade de exp ao vencer uma luta
 - mostrar o dano da trap antes de fechar o modal
+
+<!-- <a href="https://www.freepik.com/free-vector/magic-spheres-shiny-energy-balls_26796745.htm#query=game%20magic&position=33&from_view=keyword">Image by upklyak</a> on Freepik -->

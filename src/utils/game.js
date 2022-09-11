@@ -16,9 +16,10 @@ import { v4 as uuidv4 } from 'uuid';
  * @param {Object} map necessário conter map.size
  * @param {Array} enemies array de inimigos
  * @param {Array} items array de itens
+ * @param {Array} traps array de armadilhas
  * @returns retonrno uma array com posicoes aleatorias
  */
-export const generatePositions = (map, enemies, items) => {
+export const generatePositions = (map, enemies, items, traps) => {
   let positions = [];
 
   for (let i = 0; i < map.size; i++) {
@@ -34,7 +35,7 @@ export const generatePositions = (map, enemies, items) => {
         value = items[Math.floor(Math.random() * items.length)];
         break;
       case TRAP:
-        value = { name: 'trap' };
+        value = traps[Math.floor(Math.random() * traps.length)];
         break;
       case NULL:
         value = {};

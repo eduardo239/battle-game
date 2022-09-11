@@ -119,9 +119,7 @@ const ModalFight = ({ show, setModalFight }) => {
         );
       }
 
-      setTimeout(() => {
-        setModalFight(false);
-      }, 2000);
+      setModalFight(false);
     }
     resetFight();
   };

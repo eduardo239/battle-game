@@ -139,6 +139,7 @@ const ContextGame = ({ children }) => {
         items,
         maps,
         enemies,
+        traps,
         map,
         weapons,
         magics,

@@ -7,7 +7,7 @@ import { URL_UNK } from '../utils/constants';
 
 const SelectMap = () => {
   const navigate = useNavigate();
-  const { items, enemies, map, maps, setMap, game, setGame } =
+  const { items, enemies, map, maps, traps, setMap, game, setGame } =
     useContext(GameContext);
 
   const handleSelectThis = data => {
@@ -21,7 +21,7 @@ const SelectMap = () => {
 
     // gerar as posicoes
     try {
-      let positions = generatePositions(map, enemies, items);
+      let positions = generatePositions(map, enemies, items, traps);
       setGame({
         ...game,
         map: map,
