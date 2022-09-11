@@ -10,3 +10,18 @@
 .position.pass {
   opacity: 0.25;
 }
+.position.code {
+  color: var(--green);
+}
+.position.chest {
+  color: var(--warning);
+}
+.position.enemy {
+  color: var(--error);
+}
+.position.item {
+  color: var(--info);
+}
+.position.trap {
+  color: var(--tertiary);
+}

@@ -59,7 +59,7 @@ const SelectItem = () => {
             </button>
           </Link>
           <Link to="/select-weapon">
-            <button disabled={!hero || hero.items.length === 0}>
+            <button disabled={!hero || (hero.items && hero.items.length === 0)}>
               próximo{' '}
               <span className="material-symbols-outlined">navigate_next</span>
             </button>

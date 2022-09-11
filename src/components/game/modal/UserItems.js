@@ -67,9 +67,6 @@ const UserItems = ({ show, setModalItem }) => {
         });
         break;
       case WEAPON:
-        // TODO: validar vida maxima
-        // Aplicar condicao de envenenado ao inimigo
-        console.log(data);
         setHero({
           ...hero,
           equipped: { ...hero.equipped, weapon: data },
@@ -101,7 +98,7 @@ const UserItems = ({ show, setModalItem }) => {
 
           <p className="color-error">- Itens</p>
           <div className="grid-container">
-            {hero && hero.items.length > 0 ? (
+            {hero && hero.items && hero.items.length > 0 ? (
               hero.items.map(
                 item =>
                   item.type === HEALTH && (

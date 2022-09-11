@@ -3,7 +3,7 @@ import React from 'react';
 const Position = ({ data, index, heroPosition }) => {
   return (
     <div
-      className={`position ${
+      className={`position ${Object.keys(data)[0]} ${
         heroPosition === index ? 'active' : heroPosition > index ? 'pass' : ''
       }`}
     >

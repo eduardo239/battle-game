@@ -52,7 +52,7 @@ const SelectMap = () => {
                   type="select"
                 />
               ))
-              .splice(1, 3)
+              .splice(0, 3)
           ) : (
             <span>Nada encontrado aqui</span>
           )}

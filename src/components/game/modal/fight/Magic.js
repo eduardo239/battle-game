@@ -19,7 +19,7 @@ const ModalMagic = ({
         </div>
 
         <div className="grid-container">
-          {hero && hero.magic.length > 0 ? (
+          {hero && hero.magic && hero.magic.length > 0 ? (
             hero.magic
               .map(item => (
                 <CardMagic

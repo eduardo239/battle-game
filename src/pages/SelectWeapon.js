@@ -68,7 +68,7 @@ const SelectWeapon = () => {
 
         {/* mostrar o heroi selecionado */}
         <div className="card-grid">
-          {hero && !isObjectEmpty(hero.equipped.weapon) ? (
+          {hero && hero.equipped && !isObjectEmpty(hero.equipped.weapon) ? (
             <CardWeapon
               key={hero.equipped.weapon.id}
               data={hero.equipped.weapon}
@@ -81,5 +81,4 @@ const SelectWeapon = () => {
     </div>
   );
 };
-
 export default SelectWeapon;

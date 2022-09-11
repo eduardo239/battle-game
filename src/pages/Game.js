@@ -77,6 +77,7 @@ const Game = () => {
           case ENEMY:
             setEnemy({ ...actualPosition.enemy });
             setModalFight(true);
+            // reset do log da luta
             setFightLog([]);
             break;
           case ITEM:
@@ -85,8 +86,6 @@ const Game = () => {
           case TRAP:
             setModalTrap(true);
             break;
-          case BOSS:
-            break;
           case CODE:
             setModalCode(true);
             break;
@@ -94,6 +93,8 @@ const Game = () => {
             setModalChest(true);
             break;
           case NULL:
+            break;
+          case BOSS:
             break;
           default:
             break;
@@ -118,7 +119,7 @@ const Game = () => {
   return (
     <div className="game-container">
       {/* informacoes sobre o heroi*/}
-      {hero && <Hero data={hero} />}
+      {hero && hero.id && <Hero data={hero} />}
       {/* timeline */}
       <Timeline game={game} />
       {/* modal shop */}

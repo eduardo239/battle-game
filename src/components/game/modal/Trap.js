@@ -19,13 +19,13 @@ const Trap = ({ show, setModalTrap }) => {
   });
 
   const handleTrap = data => {
-    let _tpd = data.type;
-    let _dpf = 0;
-    switch (_tpd) {
+    let type = data.type;
+    let damage = 0;
+    switch (type) {
       case BOMB:
-        _dpf = random(data.min, data.max);
-        setHero({ ...hero, health: (hero.health -= _dpf) });
-        messageHandler(ERROR, `O herói sofreu ${_dpf} de dano`, setMessage);
+        damage = random(data.min, data.max);
+        setHero({ ...hero, health: (hero.health -= damage) });
+        messageHandler(ERROR, `O herói sofreu ${damage} de dano`, setMessage);
 
         if (hero.health <= 0) {
           messageHandler(ERROR, `GAME OVER`, setMessage, 5000);
