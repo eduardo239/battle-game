@@ -7,15 +7,24 @@ import { URL_UNK } from '../utils/constants';
 
 const SelectMap = () => {
   const navigate = useNavigate();
-  const { items, enemies, map, maps, traps, setMap, game, setGame } =
-    useContext(GameContext);
-
-  const handleSelectThis = data => {
-    // adicionar o mapa ao jogo
-    setMap(data);
-  };
+  const {
+    items,
+    enemies,
+    map,
+    maps,
+    traps,
+    setMap,
+    game,
+    setGame,
+    resetGame,
+    resetFight,
+  } = useContext(GameContext);
 
   const initGame = () => {
+    // resetando
+    resetGame();
+    resetFight();
+
     // configurar o jogo
     setGame({ ...game, map: map });
 
@@ -31,7 +40,7 @@ const SelectMap = () => {
       });
 
       // redirecionar e iniciar o jogo
-      setTimeout(() => navigate('/start-game'), 100);
+      navigate('/start-game');
     } catch (error) {
       console.warn(error);
     }
@@ -48,7 +57,7 @@ const SelectMap = () => {
                 <CardMap
                   key={Math.random()}
                   data={data}
-                  handleClick={() => handleSelectThis(data)}
+                  handleClick={() => setMap(data)}
                   type="select"
                 />
               ))

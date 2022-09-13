@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  ENEMY_IS_ATTACKING,
+  ENEMY_WON,
+  HERO_TURN_TO_PLAY,
+  HERO_WON,
+} from '../../../../utils/constants';
 
 const Turn = ({ fight }) => {
   return (
@@ -10,14 +16,12 @@ const Turn = ({ fight }) => {
         {!fight.end ? (
           <small>
             Vez de jogar:{' '}
-            {fight.turn === 0
-              ? ' Vez do Herói de jogar'
-              : ' O Inimigo está atacando ....'}
+            {fight.turn === 0 ? HERO_TURN_TO_PLAY : ENEMY_IS_ATTACKING}
           </small>
         ) : (
           <small>
             Fim da luta:
-            {fight.winner === 0 ? ' O herói venceu !' : ' O Inimigo venceu !'}
+            {fight.winner === 0 ? HERO_WON : ENEMY_WON}
           </small>
         )}
       </div>

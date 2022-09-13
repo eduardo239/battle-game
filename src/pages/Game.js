@@ -49,8 +49,6 @@ const Game = () => {
       // efeito de animacao dos dados
       setGame({ ...game, playing: true });
       diceAnimation(setDice, setUpdatedDice);
-    } else {
-      alert('Boss');
     }
   };
 
@@ -95,6 +93,7 @@ const Game = () => {
           case NULL:
             break;
           case BOSS:
+            alert('BOSS!');
             break;
           default:
             break;
@@ -106,9 +105,7 @@ const Game = () => {
   useEffect(() => {
     let mounted = true;
     // movimenta para proxima posicao apos animacao dos dados
-    if (updatedDice && mounted) {
-      playUpdateStats();
-    }
+    if (updatedDice && mounted) playUpdateStats();
 
     return () => {
       mounted = false;

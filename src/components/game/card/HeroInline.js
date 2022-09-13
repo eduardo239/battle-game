@@ -33,7 +33,9 @@ const HeroInline = ({ data }) => {
           </div>
           <div className="hero-inline">
             <span>{data.name}</span>
-            <span>{data.health}</span>
+            <span>
+              {data.health}/{data.maxHealth}
+            </span>
             <span>{data.mana}</span>
             <span>${data.gold}</span>
             <span>

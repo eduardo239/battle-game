@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { DO_YOU_WANT_TO_RESTART } from '../../utils/constants';
 import ConfirmModal from '../ui/ConfirmModal';
 
 const GameButtons = ({
   play,
   reset,
   game,
-  setModalItem,
-  setModalShop,
   modalShop,
   modalItem,
+  setModalShop,
+  setModalItem,
 }) => {
   const [resetModal, setResetModal] = useState(false);
 
@@ -18,7 +19,7 @@ const GameButtons = ({
         onClick={reset}
         active={resetModal}
         cancel={setResetModal}
-        message="Tem certeza que deseja reiniciar o jogo?"
+        message={DO_YOU_WANT_TO_RESTART}
       />
 
       <div className="game-menu-buttons">

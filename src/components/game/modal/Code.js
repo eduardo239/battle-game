@@ -4,11 +4,6 @@ import { isObjectEmpty } from '../../../utils';
 
 import CardCode from '../card/Code';
 
-let data = {
-  id: 1,
-  name: 'code',
-};
-
 const Code = ({ show, setModalCode }) => {
   const { randomChest } = useContext(GameContext);
 

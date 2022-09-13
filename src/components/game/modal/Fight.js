@@ -11,20 +11,31 @@ import ModalItems from './UserItems';
 import ModalMagic from './fight/Magic';
 import Toast from '../../ui/Toast';
 import { messageHandler } from '../../../utils/game';
-import { ERROR } from '../../../utils/constants';
+import {
+  ERROR,
+  HERO_HAS_BEEN_DEFEATED,
+  ENEMY_HAS_BEEN_DEFEATED,
+} from '../../../utils/constants';
+import {
+  logHeroMagic,
+  logHeroDamage,
+  logEnemyDamage,
+  logGoldRemoved,
+  logGoldRemovedAndExp,
+} from '../../../utils/log';
 
 const ModalFight = ({ show, setModalFight }) => {
   const { hero, setHero } = useContext(HeroContext);
   const {
+    game,
     fight,
     enemy,
+    setGame,
     setFight,
     setEnemy,
     fightLog,
     setFightLog,
     resetFight,
-    game,
-    setGame,
   } = useContext(GameContext);
   const [modalItem, setModalItem] = useState(false);
   const [modalUserMagic, setModalUserMagic] = useState(false);
@@ -38,17 +49,18 @@ const ModalFight = ({ show, setModalFight }) => {
    * Causa um dano aleatório ao herói
    */
   const enemyTurn = () => {
-    let _rxn = random(5, 15);
-    let _sta = 'O Inimigo provocou ' + _rxn + ' de dano.';
+    // TODO: ajustar dano do heroi
+    let randomDamage = random(5, 15);
+    let message = logEnemyDamage(randomDamage);
 
     setTimeout(() => {
-      setHero({ ...hero, health: hero.health - _rxn });
+      setHero({ ...hero, health: hero.health - randomDamage });
       setFight({
         ...fight,
         turn: 0,
         round: fight.round + 1,
       });
-      setFightLog([...fightLog, _sta]);
+      setFightLog([...fightLog, message]);
     }, 1000);
   };
 
@@ -60,9 +72,9 @@ const ModalFight = ({ show, setModalFight }) => {
   const hit = () => {
     let equippedWeapon = hero.equipped.weapon;
     let weaponDamage = random(equippedWeapon.min, equippedWeapon.max);
-    let _stq = 'O Herói atacou, provocando ' + weaponDamage + ' de dano.';
+    let message = logHeroDamage(weaponDamage);
 
-    setFightLog([...fightLog, _stq]);
+    setFightLog([...fightLog, message]);
     setEnemy({ ...enemy, health: enemy.health - weaponDamage });
     setFight({ ...fight, turn: 1 });
   };
@@ -73,11 +85,10 @@ const ModalFight = ({ show, setModalFight }) => {
    */
   const handleUseMagic = data => {
     let magicDamage = random(data.min, data.max);
-    let _itx =
-      'O Herói usou ' + data.name + ' e causou ' + magicDamage + ' de dano.';
+    let message = logHeroMagic(data.name, magicDamage);
 
     if (data.mana <= hero.mana) {
-      setFightLog([...fightLog, _itx]);
+      setFightLog([...fightLog, message]);
       setEnemy({ ...enemy, health: enemy.health - magicDamage });
       setHero({ ...hero, mana: hero.mana - data.mana });
       setFight({ ...fight, turn: 1 });
@@ -101,11 +112,7 @@ const ModalFight = ({ show, setModalFight }) => {
       let goldBase = 15;
       if (expHero < expBase) {
         setHero({ ...hero, gold: hero.gold - goldBase, exp: 0 });
-        messageHandler(
-          ERROR,
-          `Removido ${goldBase} de ouro e 0 de experiência!`,
-          setMessage
-        );
+        messageHandler(ERROR, logGoldRemoved(goldBase), setMessage);
       } else {
         setHero({
           ...hero,
@@ -114,7 +121,7 @@ const ModalFight = ({ show, setModalFight }) => {
         });
         messageHandler(
           ERROR,
-          `Removido ${goldBase} de ouro e ${expBase} de experiência!`,
+          logGoldRemovedAndExp(goldBase, expBase),
           setMessage
         );
       }
@@ -136,13 +143,11 @@ const ModalFight = ({ show, setModalFight }) => {
       } else if (fight.turn === 1 && enemy.health > 0) {
         enemyTurn();
       } else if (hero.health <= 0) {
-        let _ini = 'O herói foi derrotado!';
-        setFightLog([...fightLog, _ini]);
+        setFightLog([...fightLog, HERO_HAS_BEEN_DEFEATED]);
         setFight({ ...fight, winner: 1, end: true });
         setGame({ ...game, end: true });
       } else if (enemy.health <= 0) {
-        let _itx = 'O inimigo foi derrotado';
-        setFightLog([...fightLog, _itx]);
+        setFightLog([...fightLog, ENEMY_HAS_BEEN_DEFEATED]);
         setFight({ ...fight, winner: 0, end: true });
 
         // validar o exp atual e realizar a evolucao do heroi
@@ -215,7 +220,13 @@ const ModalFight = ({ show, setModalFight }) => {
         </div>
 
         {/* inventario */}
-        <ModalItems show={modalItem} setModalItem={setModalItem} />
+        <ModalItems
+          show={modalItem}
+          setModalItem={setModalItem}
+          setFight={setFight}
+          fight={fight}
+          fighting={true}
+        />
 
         {/* magia */}
         <ModalMagic

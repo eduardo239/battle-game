@@ -6,7 +6,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { messageHandler } from '../../../utils/game';
 import Toast from '../../ui/Toast';
 import CardItem from '../card/Item';
-import { ITEM, SUCCESS } from '../../../utils/constants';
+import {
+  ITEM,
+  SUCCESS,
+  GIFT_PURCHASED_SUCCESSFULLY,
+} from '../../../utils/constants';
 
 const ModalItem = ({ show, setModalGiftItem }) => {
   const { randomItem, getRandomItem, resetRandomItem } =
@@ -19,11 +23,12 @@ const ModalItem = ({ show, setModalGiftItem }) => {
   });
 
   const handleGet = data => {
-    let i = { ...data, id: uuidv4() };
-    let _nwi = [...hero.items, i];
+    let newItem = { ...data, id: uuidv4() };
+    let arrayItems = [...hero.items, newItem];
+    console.log(arrayItems);
 
-    setHero({ ...hero, items: _nwi });
-    messageHandler(SUCCESS, 'Item adiquirido com sucesso!', setMessage);
+    setHero({ ...hero, items: arrayItems });
+    messageHandler(SUCCESS, GIFT_PURCHASED_SUCCESSFULLY, setMessage);
 
     setModalGiftItem(false);
     resetRandomItem();

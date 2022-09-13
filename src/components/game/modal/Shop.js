@@ -6,7 +6,18 @@ import { messageHandler } from '../../../utils/game';
 import CardItem from '../card/Item';
 import CardWeapon from '../card/Weapon';
 import Toast from '../../ui/Toast';
-import { ITEM, SUCCESS, WARNING, WEAPON } from '../../../utils/constants';
+import {
+  HEALTH,
+  PURCHASED_ITEM,
+  MANA,
+  POISON,
+  SUCCESS,
+  WARNING,
+  WEAPON,
+  PURCHASED_GUN,
+  INSUFFICIENT_GOLD,
+  NO_HERO_WAS_SELECTED,
+} from '../../../utils/constants';
 import { isObjectEmpty } from '../../../utils';
 
 const Shop = ({ show, setModalShop }) => {
@@ -25,16 +36,18 @@ const Shop = ({ show, setModalShop }) => {
         let newGold = hero.gold - data.price;
         let newData = { ...data, id: uuidv4() };
         switch (data.type) {
-          case ITEM:
+          case MANA:
+          case HEALTH:
+          case POISON:
             let newItems = [...hero.items, newData];
             setHero({ ...hero, items: newItems, gold: newGold });
-            messageHandler(SUCCESS, 'Item comprado com sucesso!', setMessage);
+            messageHandler(SUCCESS, PURCHASED_ITEM, setMessage);
 
             break;
           case WEAPON:
             let newIWeapons = [...hero.weapons, newData];
             setHero({ ...hero, weapons: newIWeapons, gold: newGold });
-            messageHandler(SUCCESS, 'Arma comprada com sucesso!', setMessage);
+            messageHandler(SUCCESS, PURCHASED_GUN, setMessage);
 
             break;
 
@@ -42,10 +55,10 @@ const Shop = ({ show, setModalShop }) => {
             break;
         }
       } else {
-        messageHandler(WARNING, 'Sem ouro suficiente para compra!', setMessage);
+        messageHandler(WARNING, INSUFFICIENT_GOLD, setMessage);
       }
     } else {
-      messageHandler(WARNING, 'O herói não foi selecionado!', setMessage);
+      messageHandler(WARNING, NO_HERO_WAS_SELECTED, setMessage);
     }
   };
 

@@ -35,14 +35,12 @@
   width: 100px;
   height: 150px;
   text-transform: uppercase;
-  /* FIXME: */
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
 .card-content span {
-  /* FIXME: linha abaixo do texto */
   font-size: 0.65rem;
   padding: 0.15rem 0;
   width: 100%;

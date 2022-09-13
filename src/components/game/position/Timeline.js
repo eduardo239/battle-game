@@ -1,4 +1,5 @@
 import React from 'react';
+import { NO_INFORMATION_AVAILABLE } from '../../../utils/constants';
 import Position from './Position';
 
 const Timeline = ({ game }) => {
@@ -15,7 +16,7 @@ const Timeline = ({ game }) => {
         ))
       ) : (
         <div className="text-center">
-          <span>Nenhuma informação encontrada</span>
+          <span>{NO_INFORMATION_AVAILABLE}</span>
         </div>
       )}
     </>

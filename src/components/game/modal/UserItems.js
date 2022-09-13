@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { HeroContext } from '../../../context/Hero';
 import {
   MANA,
@@ -7,11 +7,23 @@ import {
   SUCCESS,
   WEAPON,
 } from '../../../utils/constants';
+import {
+  logHeroEquipped,
+  logHeroUsedHealing,
+  logHeroUsedMana,
+  logHeroUsedPoison,
+} from '../../../utils/log';
 import Toast from '../../ui/Toast';
 import CardItem from '../card/Item';
 import CardWeapon from '../card/Weapon';
 
-const UserItems = ({ show, setModalItem }) => {
+const UserItems = ({
+  show,
+  setModalItem,
+  fight,
+  setFight,
+  fighting = null,
+}) => {
   const { hero, setHero } = useContext(HeroContext);
 
   const [message, setMessage] = useState({
@@ -22,48 +34,50 @@ const UserItems = ({ show, setModalItem }) => {
   const handleUse = data => {
     // remove item da lista ao utilizar
     let arrItems = hero.items.filter(i => i.id !== data.id);
-    let text = '';
 
     switch (data.type) {
       case MANA:
         // TODO: validar mana maxima
         setHero({ ...hero, items: arrItems, mana: hero.mana + data.value });
-        text =
-          'O Herói usou ' +
-          data.name +
-          ' e aumentou ' +
-          data.value +
-          ' de mana.';
-        setMessage({ type: SUCCESS, content: text });
+
+        setMessage({
+          type: SUCCESS,
+          content: logHeroUsedMana(data.name, data.value),
+        });
         break;
       case HEALTH:
         // TODO: validar vida maxima
-        setHero({ ...hero, items: arrItems, health: hero.health + data.value });
-        text =
-          'O Herói usou ' +
-          data.name +
-          ' e curou ' +
-          data.value +
-          ' de sua vida.';
-        setMessage({ type: SUCCESS, content: text });
+        let newValue = hero.health + data.value;
+        if (newValue >= hero.maxHealth) {
+          setHero({
+            ...hero,
+            items: arrItems,
+            health: hero.maxHealth,
+          });
+        } else {
+          setHero({
+            ...hero,
+            items: arrItems,
+            health: hero.health + data.value,
+          });
+        }
+
+        setMessage({
+          type: SUCCESS,
+          content: logHeroUsedHealing(data.name, data.value),
+        });
         break;
       case POISON:
-        // TODO: validar vida maxima
-        // Aplicar condicao de envenenado ao inimigo
+        // TODO: Aplica condicao de envenenado ao inimigo
         setHero({
           ...hero,
           items: arrItems,
           equipped: { ...hero.equipped, poison: true },
         });
-        text =
-          'O Herói usou ' +
-          data.name +
-          ' e envenenou ' +
-          data.value +
-          ' o inimigo.';
+
         setMessage({
           type: SUCCESS,
-          content: text,
+          content: logHeroUsedPoison(data.name, data.value),
         });
         break;
       case WEAPON:
@@ -71,10 +85,10 @@ const UserItems = ({ show, setModalItem }) => {
           ...hero,
           equipped: { ...hero.equipped, weapon: data },
         });
-        text = 'O Herói equipou ' + data.name + '.';
+
         setMessage({
           type: SUCCESS,
-          content: text,
+          content: logHeroEquipped(data.name),
         });
         break;
       default:
@@ -83,9 +97,19 @@ const UserItems = ({ show, setModalItem }) => {
 
     setTimeout(() => setMessage({ type: '', content: '' }), 2000);
 
-    // TODO: alternar turno da batalha ao utilizar o item dentro da batalha
-    setModalItem(false);
+    if (fighting) {
+      setFight({ ...fight, turn: 1 });
+      setModalItem(false);
+    }
   };
+
+  useEffect(() => {
+    let mounted = true;
+
+    return () => {
+      mounted = false;
+    };
+  }, [hero]);
 
   return (
     <>
@@ -99,17 +123,14 @@ const UserItems = ({ show, setModalItem }) => {
           <p className="color-error">- Itens</p>
           <div className="grid-container">
             {hero && hero.items && hero.items.length > 0 ? (
-              hero.items.map(
-                item =>
-                  item.type === HEALTH && (
-                    <CardItem
-                      key={item.id}
-                      data={item}
-                      handleClick={() => handleUse(item)}
-                      type="use"
-                    />
-                  )
-              )
+              hero.items.map(item => (
+                <CardItem
+                  key={item.id}
+                  data={item}
+                  handleClick={() => handleUse(item)}
+                  type="use"
+                />
+              ))
             ) : (
               <p>
                 <small>O herói não possui itens.</small>
@@ -119,7 +140,7 @@ const UserItems = ({ show, setModalItem }) => {
 
           <p className="color-error">- Armas</p>
           <div className="grid-container">
-            {hero && hero.weapons.length > 0 ? (
+            {hero && hero.weapons && hero.weapons.length > 0 ? (
               hero.weapons.map(
                 item =>
                   item.type === WEAPON && (

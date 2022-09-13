@@ -2,7 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { GameContext } from '../../../context/Game';
 import { isObjectEmpty } from '../../../utils';
 import { messageHandler } from '../../../utils/game';
-import { CHEST, ERROR, SUCCESS } from '../../../utils/constants';
+import {
+  CHEST,
+  CHEST_HAS_BEEN_OPENED,
+  ERROR,
+  PASSWORD_IS_INCORRECT,
+  SUCCESS,
+} from '../../../utils/constants';
 import Toast from '../../ui/Toast';
 import CardChest from '../card/Chest';
 
@@ -19,9 +25,9 @@ const Chest = ({ show, setModalChest }) => {
 
   const handleGet = data => {
     if (data.code === password) {
-      messageHandler(SUCCESS, 'Bau aberto com sucesso!', setMessage);
+      messageHandler(SUCCESS, CHEST_HAS_BEEN_OPENED, setMessage);
     } else {
-      messageHandler(ERROR, 'Falha ao abrir o bau!', setMessage);
+      messageHandler(ERROR, PASSWORD_IS_INCORRECT, setMessage);
     }
     setAttempt(true);
   };
