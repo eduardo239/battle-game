@@ -56,7 +56,7 @@ const Trap = ({ show, setModalTrap }) => {
         <div className={`modal-container ${show ? 'active' : ''}`}>
           <div className={`modal ${show ? 'active' : ''}`}>
             <div className="modal-header">
-              <h2>Trap</h2>
+              <h3>Armadilha</h3>
             </div>
             <div className="flex-justify-center">
               <CardTrap

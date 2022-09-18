@@ -52,16 +52,14 @@ const SelectMap = () => {
         {/* loop pelos herois da api */}
         <div className="card-grid">
           {maps.length > 0 ? (
-            maps
-              .map(data => (
-                <CardMap
-                  key={Math.random()}
-                  data={data}
-                  handleClick={() => setMap(data)}
-                  type="select"
-                />
-              ))
-              .splice(0, 3)
+            maps.map(data => (
+              <CardMap
+                key={Math.random()}
+                data={data}
+                handleClick={() => setMap(data)}
+                type="select"
+              />
+            ))
           ) : (
             <span>Nada encontrado aqui</span>
           )}
@@ -70,14 +68,14 @@ const SelectMap = () => {
         {/* menu */}
         <div className="menu-select">
           <Link to="/select-weapon">
-            <button>
-              voltar{' '}
-              <span className="material-symbols-outlined">navigate_before</span>{' '}
-            </button>
+            <button className="btn btn-primary">voltar</button>
           </Link>
-          <button onClick={initGame} disabled={!map}>
-            começar{' '}
-            <span className="material-symbols-outlined">navigate_next</span>
+          <button
+            className="btn btn-primary"
+            onClick={initGame}
+            disabled={!map}
+          >
+            começar
           </button>
         </div>
 

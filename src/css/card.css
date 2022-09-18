@@ -51,7 +51,7 @@
   position: absolute;
   top: -12px;
   left: -6px;
-  background: var(--secondary);
+  background: var(--warning);
   color: var(--dark);
   padding: 4px;
   rotate: -28deg;

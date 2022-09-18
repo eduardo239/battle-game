@@ -116,11 +116,15 @@ const UserItems = ({
       <div className={`modal-container ${show ? 'active' : ''}`}>
         <div className={`modal ${show ? 'active' : ''}`}>
           <div className="modal-header">
-            <h2>Inventário</h2>
-            <button onClick={() => setModalItem(false)}>fechar</button>
+            <h3>Inventário</h3>
+            <button
+              className="btn btn-primary"
+              onClick={() => setModalItem(false)}
+            >
+              fechar
+            </button>
           </div>
 
-          <p className="color-error">- Itens</p>
           <div className="grid-container">
             {hero && hero.items && hero.items.length > 0 ? (
               hero.items.map(item => (
@@ -138,7 +142,6 @@ const UserItems = ({
             )}
           </div>
 
-          <p className="color-error">- Armas</p>
           <div className="grid-container">
             {hero && hero.weapons && hero.weapons.length > 0 ? (
               hero.weapons.map(

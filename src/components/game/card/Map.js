@@ -18,17 +18,17 @@ const Map = ({ data, handleClick, type = 'none' }) => {
           <span>SZ: {data.size}</span>
         </div>
         {type === 'shop' && (
-          <button className="width100" onClick={handleClick}>
+          <button className="btn btn-primary" onClick={handleClick}>
             buy
           </button>
         )}
         {type === 'use' && (
-          <button className="width100" onClick={handleClick}>
+          <button className="btn btn-primary" onClick={handleClick}>
             use
           </button>
         )}
         {type === 'select' && (
-          <button className="width100" onClick={handleClick}>
+          <button className="btn btn-primary" onClick={handleClick}>
             selecionar
           </button>
         )}

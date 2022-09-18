@@ -13,7 +13,7 @@
 .message.message.success,
 .message.warning,
 .message.error {
-  background: var(--dark-alt);
+  background: var(--dark-alternate);
   border: 4px solid var(--dark);
 }
 

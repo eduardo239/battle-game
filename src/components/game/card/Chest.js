@@ -28,7 +28,11 @@ const Card = ({
             onChange={e => setPassword(e.target.value)}
             value={password}
           />
-          <button disabled={attempt} className="width100" onClick={handleClick}>
+          <button
+            className="btn btn-primary"
+            disabled={attempt}
+            onClick={handleClick}
+          >
             abrir
           </button>
         </>

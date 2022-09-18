@@ -5,7 +5,7 @@
 
 .hero-inline-container {
   display: flex;
-  background: var(--secondary);
+  background: var(--primary);
   align-items: center;
   position: sticky;
   top: 0;
@@ -14,7 +14,7 @@
 
 .hero-inline {
   align-items: center;
-  background: var(--secondary);
+
   color: var(--dark);
   display: grid;
   flex: 1;

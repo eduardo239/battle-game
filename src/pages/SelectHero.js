@@ -40,15 +40,14 @@ const SelectHero = () => {
         {/* menu */}
         <div className="menu-select">
           <Link to="/">
-            <button>
+            <button className="btn btn-primary">
               início{' '}
               <span className="material-symbols-outlined">navigate_before</span>
             </button>
           </Link>
           <Link to="/select-item">
-            <button disabled={!hero}>
-              próximo{' '}
-              <span className="material-symbols-outlined">navigate_next</span>
+            <button className="btn btn-primary" disabled={!hero}>
+              próximo
             </button>
           </Link>
         </div>

@@ -67,14 +67,19 @@ const Shop = ({ show, setModalShop }) => {
       <div className={`modal-container ${show ? 'active' : ''}`}>
         <div className={`modal ${show ? 'active' : ''}`}>
           <div className="modal-header">
-            <h2>Loja</h2>
+            <h3>Loja</h3>
             <p className="color-dark">
               Saldo do herói: ${(hero && hero.gold) || 0}
             </p>
-            <button onClick={() => setModalShop(false)}>fechar</button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => setModalShop(false)}
+            >
+              fechar
+            </button>
           </div>
 
-          <h3>Itens</h3>
+          <h5 className="text-center">Itens</h5>
           <div className="card-container">
             {items.length > 0 ? (
               items.map(item => (
@@ -91,7 +96,7 @@ const Shop = ({ show, setModalShop }) => {
           </div>
 
           {/* armas */}
-          <h3>Armas</h3>
+          <h5 className="text-center">Armas</h5>
           <div className="card-container">
             {weapons.length > 0 ? (
               weapons.map(weapon => (
@@ -108,7 +113,7 @@ const Shop = ({ show, setModalShop }) => {
           </div>
 
           {/* magicas */}
-          <h3>Mágicas</h3>
+          <h5 className="text-center">Mágicas</h5>
           <div className="card-container">
             {magics.length > 0 ? (
               magics.map(magic => (

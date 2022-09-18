@@ -6,8 +6,12 @@ const ConfirmModal = ({ onClick, active, cancel, message }) => {
       <div className="modal-confirm">
         <p>{message}</p>
         <div className="flex-justify-end">
-          <button onClick={() => cancel(false)}>cancelar</button>
-          <button onClick={onClick}>confirmar</button>
+          <button className="btn btn-secondary" onClick={() => cancel(false)}>
+            cancelar
+          </button>
+          <button className="btn btn-primary" onClick={onClick}>
+            confirmar
+          </button>
         </div>
       </div>
     </div>

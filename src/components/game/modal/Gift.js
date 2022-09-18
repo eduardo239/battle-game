@@ -48,10 +48,13 @@ const ModalItem = ({ show, setModalGiftItem }) => {
         <div className={`modal-container ${show ? 'active' : ''}`}>
           <div className={`modal ${show ? 'active' : ''}`}>
             <div className="modal-header">
-              <h2>Presente</h2>
-              <button onClick={() => setModalGiftItem(false)}>
+              <h3>Presente</h3>
+              <button
+                className="btn btn-primary"
+                onClick={() => setModalGiftItem(false)}
+              >
                 fechar
-              </button>{' '}
+              </button>
             </div>
 
             <div className="flex-justify-center">

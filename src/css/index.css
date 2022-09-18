@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:400');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
-  --primary: #f5414c;
-  --secondary: #ffcb64;
-  --tertiary: #c786bd;
+  --primary: #dbf227;
+  --primary-alternate: #9fc131;
+  --secondary: #042940;
+  --tertiary: #d6d58e;
   --light: #bfc7d5;
+  --light-alternate: #dafdba;
   --dark: #292d3e;
   --darkest: #25293a;
-  --dark-alt: #1c1c1c;
+  --dark-alternate: #1c1c1c;
+
+  --disabled: #2e2e2e;
+  --disabled-alt: #6d6d6d;
 
   --warning: #ffcb64;
   --green: #c3e07a;
@@ -16,7 +22,7 @@
   --opacity80: rgba(0, 0, 0, 0.8);
 
   --sans: 'Rubik', 'Franklin Gothic Medium', 'Arial Narrow', Arial;
-
+  --button: 'IBM Plex Mono', Arial, sans-serif;
   --shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 
   --shadow-poison: 0px 0px 24px #35f14a;
@@ -105,38 +111,48 @@ img {
 }
 
 button {
-  letter-spacing: 0.36px;
+  letter-spacing: 0.45px;
   outline: none;
   border: 2px solid transparent;
-  background-color: var(--primary);
-  color: var(--light);
-  padding: 0 0.4rem;
+  padding: 5px;
   text-transform: uppercase;
   font-size: 0.7rem;
-  width: 120px;
-  min-height: 44px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 button:hover {
   cursor: pointer;
-  border: 2px solid var(--light);
 }
 
-button:disabled {
-  background-color: #2e2e2e;
-  color: #6d6d6d;
+.btn {
+  width: 100px;
+  height: 42px;
+  font-family: var(--button);
+}
+
+.btn-primary {
+  color: var(--dark);
+  background-color: var(--primary);
+}
+
+.btn-secondary {
+  color: var(--dark-alternate);
+  background-color: var(--light-alternate);
+}
+
+.btn:disabled {
+  background-color: var(--disabled);
+  color: var(--disabled-alt);
   cursor: not-allowed;
 }
 
-button:disabled:hover {
+.btn:disabled:hover {
   border: 2px solid transparent;
-}
-
-.width100 {
-  width: 100%;
+  background-color: var(--disabled);
+  color: var(--disabled-alt);
+  cursor: not-allowed;
 }
 
 .center-center {
@@ -177,7 +193,7 @@ button:disabled:hover {
 
 .grid-container {
   display: flex;
-  margin: 1rem 0;
+  margin: 1rem 2rem;
   gap: 1rem;
   flex-wrap: wrap;
 }

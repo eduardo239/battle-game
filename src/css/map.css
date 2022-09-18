@@ -1,5 +1,8 @@
 .position {
-  margin: 0 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .position.active {
@@ -24,4 +27,9 @@
 }
 .position.trap {
   color: var(--tertiary);
+}
+
+.position.boss {
+  color: var(--light);
+  background-color: #000;
 }

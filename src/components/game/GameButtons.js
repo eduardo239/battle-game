@@ -23,25 +23,37 @@ const GameButtons = ({
       />
 
       <div className="game-menu-buttons">
-        <button disabled={game.playing || game.end} onClick={() => play()}>
+        <button
+          className="btn btn-primary"
+          disabled={game.playing || game.end}
+          onClick={() => play()}
+        >
           jogar
         </button>
         <button
+          className="btn btn-primary"
           disabled={game.playing || game.end}
           onClick={() => setModalShop(!modalShop)}
         >
           loja
         </button>
         <button
+          className="btn btn-primary"
           disabled={game.playing || game.end}
           onClick={() => setModalItem(!modalItem)}
         >
           inventário
         </button>
-        <button disabled={game.playing} onClick={() => setResetModal(true)}>
+        <button
+          className="btn btn-primary"
+          disabled={game.playing}
+          onClick={() => setResetModal(true)}
+        >
           reiniciar
         </button>
-        <button disabled={game.playing}>salvar</button>
+        <button className="btn btn-primary" disabled={game.playing}>
+          salvar
+        </button>
       </div>
     </>
   );

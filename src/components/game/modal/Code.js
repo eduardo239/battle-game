@@ -17,8 +17,13 @@ const Code = ({ show, setModalCode }) => {
         <div className={`modal-container ${show ? 'active' : ''}`}>
           <div className={`modal ${show ? 'active' : ''}`}>
             <div className="modal-header">
-              <h2>História</h2>
-              <button onClick={() => setModalCode(false)}>fechar</button>{' '}
+              <h3>História</h3>
+              <button
+                className="btn btn-primary"
+                onClick={() => setModalCode(false)}
+              >
+                fechar
+              </button>{' '}
             </div>
 
             <div className="flex-justify-center">

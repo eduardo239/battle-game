@@ -11,11 +11,16 @@ const ModalMagic = ({
     <div className={`modal-container ${modalUserMagic ? 'active' : ''}`}>
       <div className={`modal ${modalUserMagic ? 'active' : ''}`}>
         <div className="modal-header">
-          <h2>Magias</h2>
-          <h3 className="color-warning ">
+          <h3>Magias</h3>
+          <h5 className="color-dark">
             Mana disponível: {(hero && hero.mana) || 0}
-          </h3>
-          <button onClick={() => setModalUserMagic(false)}>fechar</button>
+          </h5>
+          <button
+            className="btn btn-primary"
+            onClick={() => setModalUserMagic(false)}
+          >
+            fechar
+          </button>
         </div>
 
         <div className="grid-container">

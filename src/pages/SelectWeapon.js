@@ -53,15 +53,14 @@ const SelectWeapon = () => {
         {/* menu */}
         <div className="menu-select">
           <Link to="/select-item">
-            <button>
-              voltar{' '}
-              <span className="material-symbols-outlined">navigate_before</span>
-            </button>
+            <button className="btn btn-primary">voltar</button>
           </Link>
           <Link to="/select-map">
-            <button disabled={isObjectEmpty(hero && hero.equipped.weapon)}>
-              próximo{' '}
-              <span className="material-symbols-outlined">navigate_next</span>
+            <button
+              className="btn btn-primary"
+              disabled={isObjectEmpty(hero && hero.equipped.weapon)}
+            >
+              próximo
             </button>
           </Link>
         </div>

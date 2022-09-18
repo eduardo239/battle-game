@@ -47,8 +47,13 @@ const Chest = ({ show, setModalChest }) => {
         <div className={`modal-container ${show ? 'active' : ''}`}>
           <div className={`modal ${show ? 'active' : ''}`}>
             <div className="modal-header">
-              <h2>Baú</h2>
-              <button onClick={() => setModalChest(false)}>fechar</button>{' '}
+              <h3>Baú</h3>
+              <button
+                className="btn btn-primary"
+                onClick={() => setModalChest(false)}
+              >
+                fechar
+              </button>{' '}
             </div>
 
             <div className="flex-justify-center">

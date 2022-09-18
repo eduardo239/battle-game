@@ -24,7 +24,7 @@
   width: 100%;
   transform: translateY(40px);
   opacity: 0;
-  padding: 2rem;
+  /* padding: 2rem; */
   display: none;
   border-top: 2px solid var(--primary);
   overflow-y: scroll;
@@ -92,10 +92,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 10px;
   margin-bottom: 1rem;
 }
+.modal-header h1,
 .modal-header h2,
+.modal-header h3,
+.modal-header h4,
+.modal-header h5,
 .modal-header p {
   margin: 0;
 }

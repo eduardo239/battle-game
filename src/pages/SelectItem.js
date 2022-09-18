@@ -53,15 +53,14 @@ const SelectItem = () => {
         {/* menu */}
         <div className="menu-select">
           <Link to="/select-hero">
-            <button>
-              voltar{' '}
-              <span className="material-symbols-outlined">navigate_before</span>
-            </button>
+            <button className="btn btn-primary">voltar</button>
           </Link>
           <Link to="/select-weapon">
-            <button disabled={!hero || (hero.items && hero.items.length === 0)}>
-              próximo{' '}
-              <span className="material-symbols-outlined">navigate_next</span>
+            <button
+              className="btn btn-primary"
+              disabled={!hero || (hero.items && hero.items.length === 0)}
+            >
+              próximo
             </button>
           </Link>
         </div>
